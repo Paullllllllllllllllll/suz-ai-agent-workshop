@@ -1,0 +1,17 @@
+# local-only: speaker slides never ship in this repo
+slides/
+
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+.mypy_cache/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# local Claude settings
+.claude/settings.local.json
+CLAUDE.local.md
