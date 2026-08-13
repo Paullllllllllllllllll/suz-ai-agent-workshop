@@ -1,6 +1,6 @@
 # Try-out: quantitative analysis
 
-Stub — due 1 September 2026.
+Stub — lands once the synthetic-dataset codebook exists (owner: Nico).
 
 Starter package for the quant track: a provided analysis script and
 dataset with the task of automating a robustness check and turning the

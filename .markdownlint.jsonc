@@ -1,0 +1,9 @@
+{
+  // Workshop repo markdown conventions
+  "MD013": { "line_length": 88, "code_blocks": false, "tables": false },
+  // Skill/agent definition files start with YAML frontmatter or plain prose
+  "MD041": false,
+  // Instructional placeholders like <list of ...> are intentional
+  "MD033": false,
+  "MD060": false
+}

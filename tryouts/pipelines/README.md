@@ -1,6 +1,6 @@
 # Try-out: pipelines and automation
 
-Stub — due 1 September 2026.
+Stub — lands once the synthetic-dataset codebook exists (owner: Nico).
 
 Starter package for the pipelines track: a task brief plus small input
 files (scraping/API/OCR flavored), for participants who bring no

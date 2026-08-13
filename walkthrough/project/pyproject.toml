@@ -1,0 +1,11 @@
+[project]
+name = "swiss-rents-walkthrough"
+version = "0.1.0"
+description = "Toy research project: average rents across Swiss cantons"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas",
+    "openpyxl",
+    "matplotlib",
+    "requests",
+]

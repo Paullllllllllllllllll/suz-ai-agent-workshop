@@ -1,0 +1,12 @@
+# Producer notebooks in run order and the artifacts each one writes.
+project: sample_project
+notebooks:
+  - file: notebooks/01_prepare.py
+    description: Read raw commune data, clean it, write the processed table.
+    artifacts:
+      - data/processed/communes_clean.csv
+  - file: notebooks/02_analyze.py
+    description: Compute canton-level rent statistics and plot them.
+    artifacts:
+      - outputs/canton_rents.csv
+      - outputs/canton_rents.png

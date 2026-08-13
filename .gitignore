@@ -15,3 +15,7 @@ Thumbs.db
 # local Claude settings
 .claude/settings.local.json
 CLAUDE.local.md
+
+# IDE
+.idea/
+
