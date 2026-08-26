@@ -148,7 +148,7 @@ The constructive question the discussion ends on: what can you use these
 tools for, and what do you owe a reader when you do?
 
 - European Commission / ERA Forum (2026). *Living Guidelines on the
-  Responsible Use of Generative AI in Research* (2nd revision, May
+  Responsible Use of Generative AI in Research* (third version, May
   2026).
   <https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/updated-era-living-guidelines-responsible-use-generative-ai-research-2026-05-08_en>
   The de facto European reference framework and the baseline a Swiss
