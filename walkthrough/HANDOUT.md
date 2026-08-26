@@ -432,9 +432,14 @@ structure for the actual analyses).
 > scaffold carries your own research.
 >
 > **This afternoon** builds on these patterns: advanced workflow demos
-> (13:15), a synthetic dataset generated live (14:05), then two hours
-> hands-on in tracks (pipelines, quantitative analysis, or literature
-> workflows) on your own material or the fresh dataset (14:30).
+> (13:15) — a research hub that runs overnight, then a synthetic
+> dataset built from a codebook — followed by a live literature
+> workflow (14:30) and hands-on work in tracks (pipelines,
+> quantitative analysis, literature workflows, or a project of your
+> own choosing) on your own material or the fresh dataset (14:50).
+> The day closes with an open discussion on responsible AI use
+> (16:30); the reading list behind it is `READING_LIST.md` in the
+> repository, and it travels with the follow-up package.
 >
 > **Skipped setup?** The `install/` folder in the repository has the
 > guides for both surfaces on Windows and macOS. Further reading:
