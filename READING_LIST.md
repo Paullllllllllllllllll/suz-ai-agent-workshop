@@ -1,11 +1,13 @@
 # Reading List: Working with AI, Responsibly
 
 This list accompanies the closing discussion of the workshop (08.09.2026)
-and travels with the follow-up package. It is organized around the four
+and travels with the follow-up package. It is organized around the five
 questions the discussion raises: what happens to skills you stop
 practicing, whether AI-generated text can be detected, what sustained AI
-use does to attention and judgment, and what you can defensibly use these
-tools for in research. Each entry carries a short note on what it shows
+use does to attention and judgment, what the trajectory of these tools
+means for our own work, and what you can defensibly use them for in
+research. A closing section covers synthetic participants, the case the
+afternoon demonstrated. Each entry carries a short note on what it shows
 and why it earns its place; none of them requires technical background.
 Where a paper is open access, the link leads straight to it; the rest
 open through the university network.
@@ -142,7 +144,27 @@ What does it change when the tool is also a conversation partner?
   consistent definition or measurement, and almost no longitudinal
   work.
 
-## 4. The defensible core: using AI in research
+## 4. What this means for our own work
+
+The question a day of hands-on use raises and cannot answer. Today was
+the floor, not the ceiling: these tools are the least capable they will
+ever be. Section 1 asks what happens to a skill you stop practicing;
+this asks what happens to the job. Read the entry below against
+Dell'Acqua and Bastani above, which describe the same shift at the level
+of the individual rather than the profession.
+
+- Brynjolfsson, E., Li, D., & Raymond, L. R. (2023). Generative AI at
+  work. *NBER Working Paper* 31161.
+  <https://www.nber.org/papers/w31161>
+  A field study of 5,179 customer-support agents: average productivity
+  rose 14 percent, and almost all of the gain went to the least
+  experienced workers. Read it as a question about apprenticeship rather
+  than about productivity. If the tool compresses the distance between a
+  novice and an expert, and absorbs precisely the junior tasks through
+  which novices used to become experts, what is left of the path from one
+  to the other?
+
+## 5. The defensible core: using AI in research
 
 The constructive question the discussion ends on: what can you use these
 tools for, and what do you owe a reader when you do?
@@ -183,3 +205,51 @@ tools for, and what do you owe a reader when you do?
   Both refuse AI authorship; both now require disclosure rather than
   banning use; Nature additionally forbids uploading manuscripts under
   review to AI tools.
+
+- Mittelstadt, B. (2019). Principles alone cannot guarantee ethical AI.
+  *Nature Machine Intelligence*, 1(11), 501-507.
+  <https://arxiv.org/abs/1906.06668>
+  Seven pages on why a shared list of principles does not produce ethical
+  practice: the field has none of the professional structures, fiduciary
+  duties or enforcement that made principled ethics work in medicine. The
+  sharpest short account of ethics washing, and the reason the guidelines
+  above are a floor rather than an answer.
+- Raji, I. D., Smart, A., White, R. N., Mitchell, M., Gebru, T.,
+  Hutchinson, B., Smith-Loud, J., Theron, D., & Barnes, P. (2020).
+  Closing the AI accountability gap: Defining an end-to-end framework for
+  internal algorithmic auditing. *Proceedings of FAccT 2020*, 33-44.
+  <https://dl.acm.org/doi/pdf/10.1145/3351095.3372873>
+  The scholarly form of the move you made in the hands-on block: auditing
+  a system you built yourself, before anyone outside ever sees it. Worth
+  reading precisely because you have now done a small version of it by
+  hand and know where it is uncomfortable.
+- Binz, M., et al. (2025). How should the advancement of large language
+  models affect the practice of science? *PNAS*, 122(5), e2401227121.
+  <https://doi.org/10.1073/pnas.2401227121>
+  Eighteen authors who do not agree with each other, arguing out the
+  question this workshop raises and cannot settle. Read it for the
+  disagreement rather than for a verdict: it is the best available map of
+  where reasonable people currently stand.
+
+## 6. Synthetic participants: standing in for people
+
+The afternoon generated a synthetic dataset from a codebook. These two
+papers are the argument about how far that goes once the rows are meant
+to represent people rather than to give a pipeline something to run on.
+They disagree, and the disagreement is the point.
+
+- Argyle, L. P., Busby, E. C., Fulda, N., Gubler, J. R., Rytting, C., &
+  Wingate, D. (2023). Out of one, many: Using language models to simulate
+  human samples. *Political Analysis*, 31(3), 337-351.
+  <https://doi.org/10.1017/pan.2023.2>
+  The paper that opened this line of work and the source of "algorithmic
+  fidelity": conditioned on real demographic profiles, a model reproduces
+  patterns in American survey data closely enough to be worth taking
+  seriously. Start here, then read the next entry before you believe it.
+- Gao, Y., Lee, D., Burtch, G., & Fazelpour, S. (2024). Take caution in
+  using LLMs as human surrogates. arXiv:2410.19599.
+  <https://arxiv.org/abs/2410.19599>
+  The counterweight, and the reason the dataset block insists that
+  synthetic data gives you the shape of a result and never the result:
+  model "participants" diverge from human ones in exactly the places a
+  study is usually about.

@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.3.0
+# SUZ AI Agent Workshop v0.4.0
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -51,6 +51,18 @@ catchup/       added after the workshop for those who missed it
 
 ## Changelog
 
+- **v0.4.0** (28 August 2026) -- six readings added to READING_LIST.md
+  from Nico's side, per the 26 August division (Paul preps the list,
+  Nico adds his own material). Two new sections: "What this means for
+  our own work", carrying the closing discussion's new fifth theme, and
+  "Synthetic participants: standing in for people", which is the
+  literature behind the afternoon's dataset block and the one thing the
+  list did not cover. The defensible-core section gains Mittelstadt on
+  why principles alone do not produce ethical practice, Raji et al. on
+  internal algorithmic auditing (the scholarly form of the audit the
+  hands-on block asks for), and Binz et al. on how LLMs should change
+  the practice of science. Section 4 renumbered to 5; the intro now
+  names five questions rather than four.
 - **v0.3.0** (26 August 2026) -- afternoon restructured per the joint
   facilitators' decision: the demos run as one block (a research hub,
   then a synthetic dataset from a codebook), followed by a live
