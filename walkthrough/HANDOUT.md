@@ -44,6 +44,14 @@ session running inside it.
    - **Desktop app:** open the Code tab, choose Local, click
      Select folder, and pick the copied folder.
 
+4. **Check the permission mode before your first prompt.** The project
+   ships a `.claude/settings.json` that starts sessions in Manual mode,
+   where the agent asks before every change. If the mode indicator
+   nevertheless says Auto (current versions of Claude Code default to
+   it on paid plans), press Shift+Tab in the CLI until it reads Manual,
+   or pick Manual in the mode selector next to the send button in the
+   Desktop app.
+
 **The working-directory contract.** The project's `.claude/` folder
 (skills, rules, subagents) and its `CLAUDE.md` load only if the
 session starts inside the project folder. An agent started one level
@@ -96,14 +104,16 @@ Expected: before anything is written, the agent asks for permission to
 create the file. Approve it. Then check that `hello.txt` exists in
 the folder.
 
-- **CLI:** the permission request appears in the terminal; permission
-  modes (Manual, Accept edits, Plan, Auto) are switched with
-  Shift+Tab.
+- **CLI:** the permission request appears in the terminal; the
+  permission modes you will use today (Manual, Accept edits, Plan,
+  Auto) are switched with Shift+Tab.
 - **Desktop:** the permission request appears in the conversation;
-  the same four modes sit in the mode selector in the toolbar.
+  the same modes sit in the mode selector next to the send button.
 
 Stay in Manual for now: you see and approve every action, which is
-exactly what a beginner should do.
+exactly what a beginner should do. If no request appeared and the file
+simply exists, your session is in Auto mode: switch to Manual (Part 0,
+step 4), delete the file by hand, and run the prompt again.
 
 ### 1.3 Reading files
 
@@ -326,8 +336,8 @@ most and least expensive cantons. Follow the project's conventions.
 Expected: the agent writes a Python script (not a throwaway
 calculation in chat; the rule forbids results that exist only in the
 transcript), runs it via `uv run python`, and reports the ranking:
-Zug, Zurich, and Geneva at the top, with a sizable gap to the cheapest
-cantons. Because `document-analysis` applies automatically, the script
+Zug clearly first (about 1,780 CHF a month), then Zurich and Schwyz;
+Geneva only fifth; a gap of roughly 860 CHF down to Jura. Because `document-analysis` applies automatically, the script
 carries a docstring recording purpose, data in and out, decisions
 taken, and the re-run command, and it credits the BFS as the OPEN-BY
 license requires. Three to five minutes, a few permission approvals
@@ -349,14 +359,19 @@ Does the ranking hold in each case? Summarize in a short table.
 ```
 
 Expected: the agent extends or parametrizes the script, reruns it, and
-answers with a compact comparison: the broad ranking is stable, the
-gap narrows without the two big urban cantons. The documentation is
-updated to record the new variants, again unprompted.
+answers with a compact comparison: the ranking is unchanged without
+Zurich and Geneva, because the extremes are Zug and Jura, which
+falsifies the big-city intuition; the period split is stable, with a
+slightly wider gap after 2015. The documentation is updated to record
+the new variants, again unprompted.
 
 If the agent computes in chat instead of writing a script, remind it
 of the reproducibility rule and rerun. If pandas fails on the XLSX
 (German headers, multi-row layout), tell the agent to inspect the raw
-sheet first and adjust. Debugging its own script is normal agent work,
+sheet first and adjust. One trap worth knowing: the 2000 and 2003
+sheets label the national row "Total" instead of "Schweiz", so a
+careless canton filter counts 27 cantons in those years; a canton list
+that looks off usually means this row slipped in. Debugging its own script is normal agent work,
 and current models generally handle this type of task without issues.
 
 ### Step 5: Stress-Test and Plan (11:50-12:15)

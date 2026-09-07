@@ -58,7 +58,7 @@ The original workflow runs an external OCR/summarization tool here, producing
 a plain-text transcription and a first summary beside each PDF. That tool is
 not bundled; skip this stage and read the PDFs directly in Stage 2. A
 pre-made summary ships for one paper (Helfer, Grossmann, and Osikominu 2023),
-so its registry row already starts at `summarized`.
+so its registry row already starts at `condensed`.
 
 ## Stage 2: Deep reading
 

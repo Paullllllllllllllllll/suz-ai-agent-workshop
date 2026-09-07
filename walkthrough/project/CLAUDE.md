@@ -14,6 +14,7 @@ project/
   data/            two rent datasets + README with sources and licenses
   papers/          five open-access papers + README with citations
   .claude/
+    settings.json  starts sessions in Manual permission mode
     skills/        procedures the agent can invoke
     rules/         constraints that always apply
     agents/        subagent definitions for delegated tasks

@@ -189,9 +189,11 @@ install Python separately.
    `claude-test` folder from Test 1 (it is inside your user folder,
    `C:\Users\<yourname>\claude-test`).
 4. Type the same trivial instruction as above and send it.
-5. Expected result: Claude replies in the app. By default it works in
-   Manual mode: it proposes any file change as a diff and waits for your
-   approval before applying it.
+5. Expected result: Claude replies in the app. Look at the mode
+   selector next to the send button: current versions start in Auto
+   mode on paid plans. For the workshop we use Manual mode, which
+   proposes every file change as a diff and waits for your approval;
+   you can switch there now or on the day, the handout reminds you.
 
 If both tests pass, you are fully set up. Bring your laptop and charger
 on 8 September.

@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.4.0
+# SUZ AI Agent Workshop v0.4.1
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -50,6 +50,18 @@ catchup/       added after the workshop for those who missed it
 ```
 
 ## Changelog
+
+- **v0.4.1** (7 September 2026) -- pre-workshop audit fixes. The toy
+  project now ships `.claude/settings.json` starting sessions in Manual
+  mode, since current Claude Code versions default to Auto mode on paid
+  plans and the permission dialogs of Handout 1.2 and 1.4 would not
+  appear; Part 0 gains a mode check and 1.2 a recovery note. Step 4's
+  expected results corrected against the BFS workbook (Zug, Zurich,
+  Schwyz on top; Geneva fifth; the ranking survives dropping Zurich and
+  Geneva) and the 2000/2003 "Total" row trap named. Install guides'
+  Desktop test no longer claims Manual is the default. Gehriger 2023 is
+  *Housing Studies* 39(11); the literature-pipeline skill's note on the
+  pre-made registry row now matches the registry.
 
 - **v0.4.0** (28 August 2026) -- six readings added to READING_LIST.md
   from Nico's side, per the 26 August division (Paul preps the list,
