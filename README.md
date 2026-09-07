@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.4.1
+# SUZ AI Agent Workshop v0.4.2
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -50,6 +50,15 @@ catchup/       added after the workshop for those who missed it
 ```
 
 ## Changelog
+
+- **v0.4.2** (7 September 2026) -- the quant try-out lands. `tryouts/quant/`
+  was a stub waiting on the synthetic-dataset codebook; it now carries
+  `synthetic-dataset/`, the worked example from the afternoon demo block:
+  the codebook the data was specified in, the generator written against
+  it, and its 2,400-row output. The point of shipping it is the order of
+  operations -- codebook, then generator, then data, never rows straight
+  from a prompt -- and it is runnable, so the dataset can be regenerated
+  or the codebook rewritten for another field. Needs numpy and pandas.
 
 - **v0.4.1** (7 September 2026) -- pre-workshop audit fixes. The toy
   project now ships `.claude/settings.json` starting sessions in Manual
