@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.4.3
+# SUZ AI Agent Workshop v0.4.4
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -50,6 +50,14 @@ catchup/       added after the workshop for those who missed it
 ```
 
 ## Changelog
+
+- **v0.4.4** (8 September 2026) -- post-workshop data removal. The
+  eight CSV files under `tryouts/quant/historical-panel/data/` and
+  `tryouts/pipelines/inputs/` were shared for the workshop day only and
+  are removed from the tree; the data READMEs, source attributions, and
+  the try-out ladders stay, and both track READMEs now point
+  participants to the author for access. The files remain in the git
+  history.
 
 - **v0.4.3** (8 September 2026) -- pipelines try-out and a second quant
   option, built on the workshop morning. The pipelines track receives

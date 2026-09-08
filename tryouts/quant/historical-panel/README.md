@@ -79,9 +79,12 @@ let it add the dependency with `uv add`, not by hand-editing.
 
 ## Attribution and availability
 
-The files in `data/` are provided for the workshop day only and will be
-removed from the repository afterwards; they are not public-domain
-releases. Any output that uses them must credit the originals:
+The datasets in `data/` were shared for the workshop day only and were
+removed from the repository after the workshop; they are not
+public-domain releases. Participants who want to continue working with
+them should contact goetz@soziologie.uzh.ch. `data/README.md` still
+documents the files. Any output that uses them must credit the
+originals:
 
 - Allen, Robert C. 2001. "The Great Divergence in European Wages and
   Prices from the Middle Ages to the First World War." *Explorations in
