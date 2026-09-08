@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.4.2
+# SUZ AI Agent Workshop v0.4.3
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -50,6 +50,19 @@ catchup/       added after the workshop for those who missed it
 ```
 
 ## Changelog
+
+- **v0.4.3** (8 September 2026) -- pipelines try-out and a second quant
+  option, built on the workshop morning. The pipelines track receives
+  four unharmonized historical panels (Allen wages, a NUTS-2 urban
+  panel, a religion classification and dummy) with mismatched country
+  labels and time grids, and a ladder (inventory, build, harden). The
+  quant track gains `historical-panel/` as option B: a deliberately
+  flawed regression script on wages, cities, and religion in early
+  modern Europe with four harmonized 25-year covariate panels and a
+  ladder (audit, pipeline, robustness). Both READMEs carry source
+  attributions; the datasets are shared for the workshop day only and
+  are scheduled for removal afterwards, as documented in
+  `tryouts/README.md`.
 
 - **v0.4.2** (7 September 2026) -- the quant try-out lands. `tryouts/quant/`
   was a stub waiting on the synthetic-dataset codebook; it now carries

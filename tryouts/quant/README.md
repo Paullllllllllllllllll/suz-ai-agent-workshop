@@ -48,3 +48,12 @@ for something in your own field, have an agent implement it, and make it
 check its own output the way `generate_mobility.py` does.
 
 That is the more useful hour of the two, if you have the appetite for it.
+
+## Option B: a real historical panel
+
+If you would rather audit and rebuild a flawed analysis on real data,
+open `historical-panel/`. It ships a "quick look" regression script on
+wages, cities, and religion in early modern Europe (1500-1875), four
+harmonized covariate panels, and its own ladder: audit, pipeline,
+robustness. The data are shared for the workshop day only; see the
+attribution section in `historical-panel/README.md`.
