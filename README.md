@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.5.0
+# SUZ AI Agent Workshop v0.5.1
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -50,6 +50,10 @@ catchup/       after the workshop: slides, and how to build your own research hu
 ```
 
 ## Changelog
+
+- **v0.5.1** (18 September 2026) -- wording in
+  `catchup/replicate-nicos-research-hub/README.md`: it is now written in
+  the first person, and the closing contact line is removed.
 
 - **v0.5.0** (18 September 2026) -- catch-up package. `catchup/`
   replaces its placeholder with a README giving the order to work through
