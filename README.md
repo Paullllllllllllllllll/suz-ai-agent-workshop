@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.4.4
+# SUZ AI Agent Workshop v0.5.0
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -46,10 +46,21 @@ install/       setup guides (Windows, macOS; Claude Code CLI + Desktop)
 walkthrough/   morning: step-by-step handout and the toy project
 demos/         afternoon: workshop editions of advanced skills
 tryouts/       afternoon: starter packages per hands-on track
-catchup/       added after the workshop for those who missed it
+catchup/       after the workshop: slides, and how to build your own research hub
 ```
 
 ## Changelog
+
+- **v0.5.0** (18 September 2026) -- catch-up package. `catchup/`
+  replaces its placeholder with a README giving the order to work through
+  the day, and the full-day slides as a PDF (speaker notes stripped). A
+  new `catchup/replicate-nicos-research-hub/` folder answers the "how do I
+  start with this" questions from the afternoon. It holds a written
+  explainer of the research hub and the literature workflow (Markdown and
+  PDF), and `hub-tour/`, a clickable copy of the hub's dashboard with
+  placeholder data only. It also has a starter prompt that has your agent
+  interview you and build a first small version with you, and `agents/`,
+  seven of the hub's subagent definitions made generic.
 
 - **v0.4.4** (8 September 2026) -- post-workshop data removal. The
   eight CSV files under `tryouts/quant/historical-panel/data/` and
