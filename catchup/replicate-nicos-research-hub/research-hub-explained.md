@@ -1,10 +1,11 @@
 # How Nico's research hub works
 
 This is the setup behind the 13:15 demo, written for people rather than
-for an agent. If you want to build your own version, read this first and
-then open [`start-with-your-agent.md`](start-with-your-agent.md) in Claude
-Code or Claude Desktop. That file makes the agent interview you and build
-the first small piece with you.
+for an agent. To see it rather than read about it, open
+`hub-tour/index.html`, a copy of the dashboard filled with placeholder
+data. To build your own version, follow the steps in this folder's
+`README.md`: your agent interviews you and builds the first small piece
+with you.
 
 **Read this as a map of where it ended up, not as a plan.** The full hub
 took months, and nobody designed it up front. It grew out of one small
@@ -140,8 +141,7 @@ Pick **one** of these, not both.
    database (OpenAlex needs no API key) and shows you matches when you ask.
 
 Neither is a project. Each one is an afternoon, and neither needs a
-Raspberry Pi. The next file,
-[`start-with-your-agent.md`](start-with-your-agent.md), walks you through
-either of them with your own agent.
+Raspberry Pi. This folder's `README.md` shows how to start either one
+with your own agent.
 
 Questions: Nico Mutzner, nico.mutzner@uzh.ch

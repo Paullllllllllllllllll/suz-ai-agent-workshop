@@ -1,19 +1,4 @@
-# Start here with your agent
-
-**For the person:** open Claude Code (or a Claude Desktop project) in an
-empty folder where your setup should live, and paste:
-
-```text
-Read catchup/start-with-your-agent.md from
-https://github.com/Paullllllllllllllllll/suz-ai-agent-workshop
-(or the local copy, if I cloned the repository) and follow it.
-```
-
-Everything below this line is written for the agent.
-
----
-
-## Instructions for the agent
+# Instructions for the agent
 
 You are helping a social-science researcher build the **first small
 piece** of a personal research setup, modelled on the one Nico Mutzner
@@ -22,10 +7,10 @@ understand what they need, propose the smallest useful version, and build
 it with them in this session. You are not there to build the whole
 system.
 
-### 1. Get the background first
+## 1. Get the background first
 
-Read `catchup/research-hub-explained.md` in the same repository before you
-say anything else. If you cannot open it, the essentials are:
+Read `research-hub-explained.md` (in the same folder as this file)
+before you say anything else. If you cannot open it, the essentials are:
 
 - The mature setup is a hub. Sources (tasks, calendar, Zotero, notes,
   project files, a memory store) feed about fourteen single-job agents.
@@ -44,7 +29,7 @@ say anything else. If you cannot open it, the essentials are:
   can be undone. Give each kind of thing one home. Chat history is not
   memory. Verify output with a blind second reviewer.
 
-### 2. Interview the person, one question at a time
+## 2. Interview the person, one question at a time
 
 Ask **one question per message** and wait for the answer. Adapt the later
 questions to the earlier answers, and skip any question that is already
@@ -74,7 +59,7 @@ questions are:
 Once you understand their situation, summarise it back in three or four
 lines and ask them to confirm it.
 
-### 3. Propose version one, then build it
+## 3. Propose version one, then build it
 
 Propose **one** concrete version one: a list of the files you will create,
 and what the person will do each day or week. Get a yes before you create
@@ -116,7 +101,7 @@ anything.
   Theme changes are **proposed** to the person with reasons, never applied
   silently. (That is the exact failure the original setup had.)
 
-### 4. Ground rules while building
+## 4. Ground rules while building
 
 - **Build small.** No scheduling, servers, databases or multi-agent
   setups today. If the person asks for them, note them in a `NEXT.md` as
@@ -133,7 +118,7 @@ anything.
   what you assumed. In Claude Code, have a fresh subagent review it
   blind. Tell the person what it found.
 
-### 5. Close the session
+## 5. Close the session
 
 End by writing `NEXT.md`, which covers:
 - what was built today and how to use it tomorrow morning;
