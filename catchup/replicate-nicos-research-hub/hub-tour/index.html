@@ -183,6 +183,112 @@ body.nonotes .note { display: none; }
 .choice.right { border-color: var(--green); background: var(--green-light); } .choice.wrong { border-color: var(--red); background: var(--red-light); }
 .feedback { display: none; margin-top: 10px; padding: 10px 14px; border-radius: var(--radius); background: var(--surface-2); font-size: 14.5px; }
 
+/* usage meters */
+.sb-usage { padding: 8px 20px 10px; border-top: 1px solid var(--line-soft); }
+.sb-usage-head { font-family: var(--font-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+.sb-usage-row { display: grid; grid-template-columns: 22px 1fr 34px; gap: 8px; align-items: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin: 3px 0; }
+.sb-usage-track, .usage-bar { height: 6px; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; display: block; }
+.sb-usage-fill, .usage-fill { display: block; height: 100%; background: var(--green); }
+.warn .sb-usage-fill, .warn .usage-fill { background: var(--yellow); } .danger .sb-usage-fill, .danger .usage-fill { background: var(--red); }
+.sb-usage-row span:last-child { text-align: right; }
+details.usage { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 18px; padding: 10px 18px; }
+details.usage summary { cursor: pointer; font-family: var(--font-display); font-weight: 700; color: var(--text-soft); display: flex; gap: 10px; align-items: center; }
+details.usage summary .sum { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); font-weight: 400; }
+.usage-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; }
+.usage-head { display: flex; font-size: 14.5px; margin-bottom: 5px; } .usage-head span:last-child { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+.usage-bar { height: 9px; } .usage-sub { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* semantic search */
+.searchbar { display: flex; gap: 8px; margin-bottom: 10px; }
+.searchbar input { flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 9px 12px; font: inherit; font-size: 15.5px; }
+.searchbar input:focus { outline: none; border-color: var(--accent); }
+.qchips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.qchip { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft); border-radius: 999px; padding: 3px 12px; font-size: 13.5px; font-style: italic; }
+.qchip:hover { border-color: var(--accent); color: var(--accent-bright); }
+.nokw { font-family: var(--font-mono); font-size: 11px; color: var(--green); border: 1px solid var(--green); border-radius: 3px; padding: 0 6px; margin-left: 6px; white-space: nowrap; }
+.match { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+
+/* map */
+.mapwrap { display: grid; grid-template-columns: 1fr 250px; gap: 18px; }
+.mapsvg { width: 100%; height: auto; display: block; background: radial-gradient(ellipse at center, #1f170f, #150f0a); border: 1px solid var(--border); border-radius: var(--radius); }
+.mapsvg .node { transition: opacity .2s; cursor: pointer; } .mapsvg .edge { transition: opacity .2s; }
+.mapsvg .dim { opacity: .08; }
+.shelfrow { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 4px; cursor: pointer; font-size: 14px; border: 1px solid transparent; }
+.shelfrow:hover, .shelfrow.on { background: var(--surface-2); border-color: var(--border); }
+.shelfrow i { width: 10px; height: 10px; border-radius: 50%; flex: none; } .shelfrow span { margin-left: auto; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.seg button { background: transparent; border: 0; color: var(--text-muted); padding: 4px 10px; font-size: 12.5px; font-family: var(--font-mono); }
+.seg button.on { background: var(--accent-light); color: var(--accent-bright); }
+
+/* tasks (the real board's anatomy) */
+.tbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+.tbar .hint { font-size: 13px; color: var(--text-muted); font-style: italic; } .tbar .spacer { flex: 1; }
+.tbar input { background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 5px 10px; font: inherit; font-size: 14px; width: 190px; }
+.pchips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.pchip { background: var(--surface); border: 1px solid var(--border); color: var(--text-soft); border-radius: 999px; padding: 3px 12px; font-size: 13.5px; display: inline-flex; gap: 6px; align-items: center; }
+.pchip b { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); font-weight: 400; }
+.pchip.on { border-color: var(--accent); color: var(--accent-bright); background: var(--accent-light); }
+.pchip .w { color: var(--yellow); }
+.kb { display: grid; grid-template-columns: repeat(5, minmax(230px, 1fr)); gap: 14px; overflow-x: auto; padding-bottom: 6px; }
+.kcol { background: rgba(0,0,0,.18); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 10px; min-height: 240px; }
+.kcol-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-soft); }
+.kcol-head .kd { width: 8px; height: 8px; border-radius: 50%; }
+.kcol-head .n { margin-left: auto; color: var(--text-muted); } .kcol-head button { background: none; border: 0; color: var(--text-muted); font-size: 16px; padding: 0 2px; }
+.kcard2 { background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--border); border-radius: var(--radius); padding: 9px 10px 8px; margin-bottom: 9px; font-size: 14px; }
+.kcard2.p-high { border-left-color: var(--orange); } .kcard2.p-medium { border-left-color: var(--yellow); } .kcard2.p-low { border-left-color: var(--text-muted); }
+.kcard2.done { opacity: .6; } .kcard2.done .tt { text-decoration: line-through; color: var(--text-muted); }
+.ktop { display: flex; gap: 9px; align-items: flex-start; }
+.tcheck { width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid var(--text-muted); flex: none; margin-top: 3px; display: grid; place-items: center; cursor: pointer; font-size: 10.5px; color: #1a1208; }
+.tcheck:hover { border-color: var(--green); } .tcheck.on { background: var(--green); border-color: var(--green); }
+.tcheck.sub { width: 14px; height: 14px; margin-top: 2px; border-radius: 3px; font-size: 9px; }
+.tt { font-weight: 600; line-height: 1.35; }
+.tmeta { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 0 26px; align-items: center; }
+.duechip { font-family: var(--font-mono); font-size: 11px; border: 1px solid var(--border); border-radius: 3px; padding: 0 5px; color: var(--text-soft); }
+.duechip.today { border-color: var(--yellow); color: var(--yellow); } .duechip.overdue { border-color: var(--red); color: #d9786f; }
+.hiflag { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; color: var(--orange); letter-spacing: .08em; }
+.recur { font-family: var(--font-mono); font-size: 11px; color: var(--purple); }
+.sprog { display: flex; align-items: center; gap: 7px; margin: 7px 0 0 26px; cursor: pointer; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); }
+.sbar { flex: 1; height: 5px; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; display: block; }
+.sbar i { display: block; height: 100%; background: var(--green); }
+.slist { margin: 6px 0 0 26px; border-left: 1px solid var(--line-soft); padding-left: 8px; }
+.srow { display: flex; gap: 7px; align-items: flex-start; font-size: 13.5px; padding: 3px 0; }
+.srow .done { text-decoration: line-through; color: var(--text-muted); }
+.srow .st { margin-left: auto; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted); white-space: nowrap; }
+.srow .st.waiting { color: var(--yellow); }
+.sadd { background: none; border: 0; color: var(--text-muted); font-size: 12.5px; padding: 2px 0; }
+.crow2 { display: flex; align-items: center; gap: 7px; margin: 7px 0 0 26px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); }
+.crow2 button { border: 1px solid var(--border); background: var(--bg); color: var(--text-soft); border-radius: 3px; font-size: 11.5px; padding: 0 6px; }
+.crow2 button.inc { border-color: var(--green); color: var(--green); }
+.today-goal { color: var(--yellow); } .today-goal.met { color: var(--green); }
+.tlist .trow { display: grid; grid-template-columns: 22px 1fr auto; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--line-soft); align-items: start; }
+.tlist .trow .tmeta { margin-left: 0; }
+
+/* seminar */
+.lr-mast { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.seal { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--accent); display: grid; place-items: center; font-family: var(--font-display); font-size: 22px; color: var(--accent-bright); background: var(--accent-light); }
+.lr-mast h3 { margin: 0; font-family: var(--font-display); font-size: 24px; } .lr-mast p { margin: 0; font-size: 14px; color: var(--text-muted); }
+.kicker { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-bright); }
+.pdots { display: flex; gap: 5px; } .pdots i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--border); } .pdots i.done { background: var(--green); border-color: var(--green); } .pdots i.cur { background: var(--accent); border-color: var(--accent); }
+.desk { display: grid; grid-template-columns: 1fr 250px; gap: 18px; }
+.margin { border-left: 1px solid var(--line-soft); padding-left: 14px; font-size: 13.5px; color: var(--text-muted); }
+.lr-answer { width: 100%; min-height: 120px; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 9px 12px; font: inherit; font-size: 15px; }
+.conf { display: flex; align-items: center; gap: 12px; margin: 10px 0; font-size: 14px; } .conf input { flex: 1; accent-color: var(--accent); } .conf output { font-family: var(--font-mono); font-size: 12px; color: var(--text-soft); width: 170px; }
+.verdict { display: none; grid-template-columns: 76px 1fr; gap: 16px; margin-top: 16px; border: 1px solid var(--yellow); border-radius: var(--radius); padding: 14px 16px; background: var(--yellow-light); }
+.verdict.show { display: grid; }
+.vscore { font-family: var(--font-display); font-size: 34px; color: var(--yellow); text-align: center; line-height: 1; } .vscore small { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+.verdict h3 { margin: 2px 0 6px; font-family: var(--font-display); }
+.calib { font-family: var(--font-mono); font-size: 12px; color: var(--orange); margin: 0 0 8px; }
+.fl { font-size: 14.5px; margin: 6px 0; } .fl b { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; display: block; }
+.fl.good b { color: var(--green); } .fl.bad b { color: #d9786f; } .fl ul { margin: 2px 0; padding-left: 18px; }
+.upgrade, .repairq { background: var(--surface); border-radius: 4px; padding: 8px 12px; font-size: 14.5px; margin-top: 8px; } .upgrade b, .repairq b { color: var(--accent-bright); }
+.lvl { display: flex; gap: 3px; } .lvl i { width: 16px; height: 7px; border-radius: 2px; background: var(--bg); border: 1px solid var(--border); } .lvl i.on { background: var(--accent); border-color: var(--accent); }
+.atlas { display: grid; grid-template-columns: 1fr auto; gap: 7px 12px; align-items: center; font-size: 14px; }
+.atlas .hd { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted); letter-spacing: .06em; }
+.obs { border-left: 2px solid var(--orange); padding: 4px 10px; margin: 6px 0; font-size: 14px; background: rgba(192,112,58,.06); }
+.obs.w { border-left-color: var(--blue); background: rgba(125,150,179,.06); }
+.drill { display: flex; gap: 8px; margin-top: 8px; } .drill input { flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 4px; padding: 7px 10px; font: inherit; }
+.drillfb { margin-top: 8px; font-size: 14px; min-height: 20px; }
+
 /* command */
 .telemetry { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 18px; }
 .telemetry div { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 14px; }
@@ -218,7 +324,8 @@ body.nonotes .note { display: none; }
   .sb h4, .tk, .crew { display: none; }
   .top { padding: 0 16px; } .top .date, .kbd { display: none; }
   .sec { padding: 18px 16px 60px; }
-  .g2, .g3, .note, .notes { grid-template-columns: 1fr; }
+  .g2, .g3, .note, .notes, .mapwrap, .desk, .usage-rows { grid-template-columns: 1fr; }
+  .sb-usage { display: none; }
   .ledger, .telemetry { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
@@ -231,6 +338,11 @@ body.nonotes .note { display: none; }
     <h4>Open tickets</h4>
     <div id="sbTickets"></div>
     <div class="crew">
+      <div class="sb-usage" title="Claude usage (example numbers). Details on Today.">
+        <div class="sb-usage-head">Claude usage</div>
+        <div class="sb-usage-row ok"><span>5h</span><span class="sb-usage-track"><span class="sb-usage-fill" style="width:34%"></span></span><span>34%</span></div>
+        <div class="sb-usage-row warn"><span>wk</span><span class="sb-usage-track"><span class="sb-usage-fill" style="width:78%"></span></span><span>78%</span></div>
+      </div>
       <h4>Crew health</h4>
       <div id="sbCrew"></div>
     </div>
@@ -295,17 +407,22 @@ const NOTES = {
 };
 
 const TASKS = [
-  { t: 'Draft the Methods section for Paper A', p: 'Thesis paper A', s: 'next', pr: 'high', e: 'writing', due: 'today' },
-  { t: 'Reply to co-author comments on the Results', p: 'Thesis paper A', s: 'next', pr: 'medium', e: 'writing', due: 'Mon' },
-  { t: 'Prepare slides for methods seminar session 3', p: 'Teaching: Methods I', s: 'scheduled', pr: 'medium', e: 'admin', due: 'Wed' },
-  { t: 'Clean survey wave 2 and run the attention checks', p: 'Survey study B', s: 'next', pr: 'high', e: 'analysis', due: 'Tue' },
-  { t: 'Read two papers on group norms (from Read next)', p: 'Literature review', s: 'next', pr: 'low', e: 'reading', due: '' },
-  { t: 'Waiting on: ethics approval for study C', p: 'Survey study B', s: 'waiting', pr: 'medium', e: 'admin', due: '' },
-  { t: 'Waiting on: supervisor feedback on chapter outline', p: 'Thesis paper A', s: 'waiting', pr: 'medium', e: 'reading', due: '' },
-  { t: 'Book room for reading group', p: 'Admin', s: 'inbox', pr: 'low', e: 'admin', due: '' },
-  { t: 'Idea: cite the placeholder replication in the Discussion', p: '', s: 'inbox', pr: 'low', e: 'writing', due: '' },
-  { t: 'Submit conference abstract', p: 'Survey study B', s: 'done', pr: 'high', e: 'writing', due: '' },
-  { t: 'Set up the analysis repository', p: 'Survey study B', s: 'done', pr: 'medium', e: 'coding', due: '' },
+  { id: 1, t: 'Draft the Methods section for Paper A', p: 'Thesis paper A', s: 'next', pr: 'high', e: 'writing', due: 'today', dueCls: 'today', tags: ['draft'],
+    kids: [['Participants and recruitment', 'done'], ['Design and conditions', 'done'], ['Measures', 'next'], ['Analysis plan (link the pre-registration)', 'next'], ['Ask co-author for the exclusion numbers', 'waiting']] },
+  { id: 2, t: 'Reply to co-author comments on the Results', p: 'Thesis paper A', s: 'next', pr: 'medium', e: 'writing', due: 'Mon 21 Sep' },
+  { id: 3, t: 'Clean survey wave 2 and run the attention checks', p: 'Survey study B', s: 'next', pr: 'high', e: 'analysis', due: 'Tue 22 Sep',
+    kids: [['Merge the wave 2 export', 'done'], ['Apply the pre-registered exclusions', 'next'], ['Write the cleaning log', 'next']] },
+  { id: 4, t: 'Screen literature-review abstracts, batch 3', p: 'Literature review', s: 'next', pr: 'medium', e: 'reading', due: 'Fri 25 Sep', cnt: [14, 40], goal: [6, 10] },
+  { id: 5, t: 'Prepare slides for methods seminar', p: 'Teaching: Methods I', s: 'scheduled', pr: 'medium', e: 'admin', due: 'Wed 23 Sep', rec: 'weekly' },
+  { id: 6, t: 'Weekly review', p: '', s: 'scheduled', pr: 'medium', e: 'admin', due: 'Fri 25 Sep', rec: 'weekly' },
+  { id: 7, t: 'Grade problem sets, week 2', p: 'Teaching: Methods I', s: 'scheduled', pr: 'medium', e: 'admin', due: 'Mon 28 Sep', cnt: [5, 24] },
+  { id: 8, t: 'Ethics approval for study C', p: 'Survey study B', s: 'waiting', pr: 'medium', e: 'admin', due: '', tags: ['chase-30-sep'] },
+  { id: 9, t: 'Supervisor feedback on the chapter outline', p: 'Thesis paper A', s: 'waiting', pr: 'medium', e: 'reading', due: '' },
+  { id: 10, t: 'Book a room for the reading group', p: 'Admin', s: 'inbox', pr: 'low', e: 'admin', due: '' },
+  { id: 11, t: 'Idea: cite the placeholder replication in the Discussion', p: '', s: 'inbox', pr: 'low', e: 'writing', due: '', tags: ['idea'] },
+  { id: 12, t: 'Email co-author about the replication data', p: 'Side project C', s: 'next', pr: 'medium', e: 'admin', due: 'Tue 15 Sep', dueCls: 'overdue' },
+  { id: 13, t: 'Submit conference abstract', p: 'Survey study B', s: 'done', pr: 'high', e: 'writing', due: '' },
+  { id: 14, t: 'Set up the analysis repository', p: 'Survey study B', s: 'done', pr: 'medium', e: 'coding', due: '' },
 ];
 
 const PAPERS = [
@@ -368,6 +485,13 @@ const RENDER = {
   home() {
     const focus = TASKS.filter(t => t.s === 'next').slice(0, 4);
     return note('home') + `
+    <details class="usage" open>
+      <summary>Claude usage<span class="sum">5h 34% · weekly 78%</span></summary>
+      <div class="usage-rows">
+        <div class="usage-row ok"><div class="usage-head"><span>5-hour</span><span>resets in 2h 14m</span></div><div class="usage-bar"><div class="usage-fill" style="width:34%"></div></div><div class="usage-sub">34% used</div></div>
+        <div class="usage-row warn"><div class="usage-head"><span>Weekly</span><span>resets in 2d 9h</span></div><div class="usage-bar"><div class="usage-fill" style="width:78%"></div></div><div class="usage-sub">78% used · the overnight agents run on this too, so it is worth watching</div></div>
+      </div>
+    </details>
     <div class="runway"><div><b>in 3 days</b>Survey study B: pre-registration</div><div><b>in 12 days</b>Conference abstract (placeholder)</div><div><b>in 8 weeks</b>Paper A: to supervisor</div></div>
     <div class="grid g2">
       <div class="grid" style="align-content:start">
@@ -453,7 +577,7 @@ const RENDER = {
   literature() {
     return note('literature') + `
       <div class="subtabs" id="litTabs">
-        ${['Inbox', 'Read next', 'Drafts', 'Overview'].map((x, i) => `<button class="${i === 0 ? 'on' : ''}" data-lt="${i}">${x}</button>`).join('')}
+        ${['Inbox', 'Search', 'Read next', 'Drafts', 'Map', 'Overview'].map((x, i) => `<button class="${i === 0 ? 'on' : ''}" data-lt="${[0, 4, 1, 2, 5, 3][i]}">${x}</button>`).join('')}
       </div>
       <div data-lp="0">
         <p class="muted small">Papers fetched overnight, scored, with the reason written down. Triage takes about four seconds each: thumbs up keeps a paper and teaches the scorer, thumbs down removes it.</p>
@@ -471,6 +595,20 @@ const RENDER = {
             <div class="rate"><button class="up" data-rate="${i}" data-v="1" title="Relevant">▲</button><button data-rate="${i}" data-v="0" title="Neutral">○</button><button class="down" data-rate="${i}" data-v="-1" title="Not relevant">▼</button></div>
           </div>
         </div>`).join('')}
+      </div>
+      <div data-lp="4" class="hidden">
+        <p class="muted small">Search your own library <b>by meaning</b>, not by keyword. In the real hub every paper is embedded with a small local model (bge-small), and your query is embedded the same way, so results match on meaning even when they share no words. Try one of these:</p>
+        <div class="searchbar"><input id="semQ" placeholder="Search your library by meaning…"><button class="btn primary" id="semGo">Search</button></div>
+        <div class="qchips">${['do people trust machines less when working in teams', 'fake survey answers generated by chatbots', 'why people stop contributing to shared goods', 'unwritten rules in groups'].map(q => `<button class="qchip" data-q="${q}">${q}</button>`).join('')}</div>
+        <div id="semOut"></div>
+        <p class="small muted">In this tour the ranking is faked over a tiny placeholder library, to show the idea.</p>
+      </div>
+      <div data-lp="5" class="hidden">
+        <p class="muted small">The whole library as a map. Papers sit near papers with similar content (embedding similarity), lines connect related papers, and each coloured region is a shelf. Click a shelf to highlight it; hover a dot for details.</p>
+        <div class="mapwrap"><div id="mapHost"></div>
+          <div class="card"><div class="card-title">Shelves</div><div id="shelfList"></div>
+            <div class="small muted" style="margin:12px 0 4px">Size nodes by</div><span class="seg"><button data-msize="cites">Citations</button><button data-msize="deg">Degree</button></span>
+            <div class="btns"><button class="btn" data-toast="In the real hub this re-embeds new papers and recomputes the layout.">Rebuild</button></div></div></div>
       </div>
       <div data-lp="1" class="hidden">
         <div class="grid g2">
@@ -514,14 +652,7 @@ const RENDER = {
   },
 
   tasks() {
-    const cols = ['inbox', 'next', 'scheduled', 'waiting', 'done'];
-    return note('tasks') + `<div class="tboard">` + cols.map(c => {
-      const ts = TASKS.filter(t => t.s === c);
-      return `<div class="lane col ${c}"><h4>${c}<span>${ts.length}</span></h4>${ts.map(t => `
-        <div class="task ${c === 'done' ? 'isdone' : ''}"><b>${esc(t.t)}</b>
-          ${t.p ? `<span class="pill">${esc(t.p)}</span>` : ''} <span class="tag">${t.e}</span>
-          <div style="display:flex;margin-top:4px"><span class="${prioCls(t.pr)}">${t.pr}</span><span class="r muted small" style="margin-left:auto">${t.due ? 'due ' + t.due : ''}</span></div></div>`).join('')}</div>`;
-    }).join('') + `</div>`;
+    return note('tasks') + `<div id="tasksRoot"></div>`;
   },
 
   calendar() {
@@ -555,24 +686,81 @@ const RENDER = {
   },
 
   learning() {
+    const atlas = [
+      ['Regression with interactions', 1, 'Statistics'], ['Multilevel models: within vs between', 1, 'Statistics'], ['Collider bias', 2, 'Statistics'],
+      ['Fixed vs random effects', 3, 'Statistics'], ['Collective action (Olson)', 3, 'Theory'], ['Social norms (Bicchieri)', 2, 'Theory'],
+      ['Rational choice critiques', 1, 'Theory'], ['Trust and reciprocity', 4, 'Theory'],
+    ];
     return note('learning') + `
-      <div class="ledger"><div><b>6</b><span>reviews due</span></div><div><b>9</b><span>terms due</span></div><div><b>41</b><span>sessions</span></div><div><b style="font-size:17px">Interactions</b><span>lowest mastery</span></div><div><b>5</b><span>day streak</span></div></div>
-      <div class="modes">${['Daily lesson', 'Theory lesson', 'Statistics lesson', 'Statistics lab', 'Term drill', 'Open session'].map((m, i) => `<button class="btn ${i === 0 ? 'primary' : ''}">${m}</button>`).join('')}</div>
-      <div class="grid g2">
-        <div class="card"><div class="card-title">Daily lesson · Statistics</div>
-          <div class="q">You regress an outcome on <b>treatment</b>, <b>female</b> and <b>treatment × female</b>. What does the coefficient on <b>treatment</b> now tell you?</div>
-          <button class="choice" data-ans="0">The average treatment effect across everyone</button>
-          <button class="choice" data-ans="1">The treatment effect for the reference group (female = 0)</button>
-          <button class="choice" data-ans="0">The difference between women and men</button>
-          <div class="feedback" id="fb"></div>
-        </div>
-        <div class="card"><div class="card-title">Knowledge atlas</div>
-          <div class="mastery">
-            ${[['Regression basics', 92], ['Interaction effects', 38], ['Multilevel models', 55], ['Causal inference (DAGs)', 61], ['Social norms theory', 80], ['Collective action', 70]].map(([k, v]) => `<span>${k}</span><div class="meter"><i style="width:${v}%"></i></div>`).join('')}
+      <div class="lr-mast"><div class="seal">S</div><div><h3>The Seminar</h3><p>Today at the Seminar: a daily lesson built from your due reviews, recent answers and tutor observations.</p></div></div>
+      <div class="ledger"><div><b>6</b><span>reviews due</span></div><div><b>9</b><span>terms due</span></div><div><b>41</b><span>sessions</span></div><div><b style="font-size:16px;line-height:1.5">Within vs between</b><span>lowest mastery</span></div><div><b>5</b><span>day streak</span></div></div>
+      <div class="modes">${['Daily lesson', 'Theory lesson', 'Statistics lesson', 'Statistics lab', 'Term drill'].map((m, i) => `<button class="btn ${i === 0 ? 'primary' : ''}" data-toast="In the real Seminar this builds a fresh session: it reads your learning record, picks the foundation points, writes new questions and validates sources and rubrics.">${m}</button>`).join('')}
+        <button class="btn" data-toast="Open session: 'The Teacher teaches me' (mentor mode: explanation, examples, probing questions) or 'I teach the Student' (you explain, and a curious student probes until it is airtight).">Open session…</button></div>
+
+      <div class="card" style="margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span class="kicker">Daily lesson · Statistics · question 2 of 4</span><span style="margin-left:auto" class="pdots"><i class="done"></i><i class="cur"></i><i></i><i></i></span></div>
+        <div class="desk">
+          <div>
+            <div class="q">You model students' test scores in 80 schools. With student SES as the only predictor, its coefficient is <b>0.40</b>. You add <b>school-mean SES</b> as a second predictor and keep the raw student SES in the model. The student SES coefficient drops to <b>0.22</b>, and school-mean SES comes out at <b>0.31</b>.<br><br>A colleague concludes: <i>"Once you account for the school, a student's own SES matters about half as much."</i> What does each coefficient now estimate, and what, if anything, is wrong with the colleague's reading?</div>
+            <textarea class="lr-answer" id="lrAnswer" placeholder="Your answer…"></textarea>
+            <div class="conf"><label for="lrConf">How sure are you?</label><input type="range" id="lrConf" min="0" max="100" step="5" value="80"><output id="lrConfOut">fairly sure · 80%</output></div>
+            <div class="btns"><button class="btn primary" id="lrSubmit">Submit answer</button></div>
+            <div class="verdict" id="lrVerdict">
+              <div class="vscore">55<small>of 100</small></div>
+              <div>
+                <div class="kicker">partial · first attempt assessed</div>
+                <h3>Repair required</h3>
+                <p class="calib" id="lrCalib"></p>
+                <div class="fl good"><b>Correct</b><ul><li>The student SES coefficient is now the <i>within-school</i> association: it compares two students in the same school who differ by one unit of SES.</li></ul></div>
+                <div class="fl bad"><b>Missing</b><ul><li>With raw SES and the school mean both in the model, the school-mean coefficient is the <i>contextual effect</i>: the between-school slope <i>minus</i> the within slope. The between-school association is 0.22 + 0.31 = 0.53.</li><li>So individual SES does not "matter half as much". The association is split into a within part and a contextual part.</li></ul></div>
+                <div class="upgrade"><b>How to improve:</b> name the quantity before you interpret the number. Say which comparison each coefficient makes (within one school, or between schools), then read its size.</div>
+                <div class="repairq"><b>Repair question:</b> if you had centred student SES on the school mean instead of entering it raw, what would the school-mean coefficient estimate, and what would its value be here?</div>
+                <p class="small muted" style="margin:10px 0 0">Sources: Raudenbush &amp; Bryk, <i>Hierarchical Linear Models</i> (2002) · Enders &amp; Tofighi (2007) on centring. <i>In this tour the feedback is a prepared example. The real Seminar grades your own answer against a rubric.</i></p>
+                <div class="btns"><button class="btn primary" data-toast="In the real Seminar you answer the repair question once. Initial answers count more than repair answers in the mastery estimate.">Answer again</button></div>
+              </div>
+            </div>
           </div>
-          <div class="card-title" style="margin-top:16px">Tutor model</div>
-          <div class="small"><b>Active misconception:</b> reads main effects as averages when an interaction is in the model (3 times this month).</div>
+          <aside class="margin"><div class="kicker" style="margin-bottom:6px">Feedback</div><p id="lrMargin">Feedback appears after you submit an answer.</p>
+            <p class="small">Why this question: your last two answers on multilevel models mixed up within- and between-group effects. That is logged as an active misconception.</p></aside>
         </div>
+      </div>
+
+      <div class="grid g3">
+        <div class="card"><div class="card-title">Knowledge atlas</div>
+          <div class="atlas"><span class="hd">CONCEPT</span><span class="hd">LEVEL 1–4</span>
+          ${atlas.map(([k, l, dom]) => `<span>${k} <span class="tag">${dom}</span></span><span class="lvl" title="${['', 'Recognise', 'Explain', 'Distinguish', 'Synthesise'][l]}">${[1, 2, 3, 4].map(i => `<i class="${i <= l ? 'on' : ''}"></i>`).join('')}</span>`).join('')}</div>
+          <div class="small muted" style="margin-top:8px">Levels: recognise → explain → distinguish → synthesise.</div>
+        </div>
+        <div class="card"><div class="card-title">Tutor model</div>
+          <div class="small muted">Observed answer patterns and misconceptions. No fixed learning-style labels.</div>
+          <div class="kicker" style="margin-top:10px">Active misconceptions</div>
+          <div class="obs">Reads a coefficient as "the effect" without saying which comparison it makes (seen 3 times, most recently on Tuesday).</div>
+          <div class="obs">Treats conditioning on a post-treatment variable as "controlling for" it.</div>
+          <div class="kicker" style="margin-top:10px">Working observations</div>
+          <div class="obs w">Strong on theory questions in open answers; weaker under multiple choice with close distractors.</div>
+        </div>
+        <div class="card"><div class="card-title">Calibration</div>
+          <div class="small">Last 20 answers: you predicted <b>74%</b> on average and scored <b>61</b>. <span style="color:var(--orange)">Overconfident by 13</span>, mostly in statistics.</div>
+          <div class="card-title" style="margin-top:14px">Score trend</div>
+          <svg viewBox="0 0 240 60" width="100%" height="60" aria-label="Score trend">
+            <polyline fill="none" stroke="#a98442" stroke-width="2" points="0,44 24,40 48,46 72,34 96,36 120,28 144,31 168,22 192,25 216,18 240,20"/>
+            <line x1="0" y1="59" x2="240" y2="59" stroke="#3a2c1c"/>
+          </svg>
+          <div class="card-title" style="margin-top:10px">Term drill</div>
+          <div class="small">Name the concept: <i>conditioning on a variable that both the treatment and the outcome cause, which opens a non-causal path between them.</i></div>
+          <div class="drill"><input id="drillIn" placeholder="Type the exact term…"><button class="btn" id="drillGo">Check</button></div>
+          <div class="drillfb" id="drillFb"></div>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:18px;grid-template-columns:1fr 1fr">
+        <div class="card"><div class="card-title">Archive</div>
+          <div class="row small">Statistics lesson · fixed vs random effects<span class="r">Tue · 4/4 · 78</span></div>
+          <div class="row small">Theory lesson · Olson and the free-rider problem<span class="r">Mon · 3/3 · 85</span></div>
+          <div class="row small">Term drill · 12 terms<span class="r">Sun · 10/12</span></div></div>
+        <div class="card"><div class="card-title">Conversations</div>
+          <div class="row small">I teach the Student · why randomisation does not fix attrition<span class="r">last week</span></div>
+          <div class="row small">The Teacher teaches me · norms vs conventions<span class="r">2 weeks ago</span></div>
+          <div class="small muted" style="margin-top:6px">Each ends in a debrief: "You established:" / "Still needed:".</div></div>
       </div>`;
   },
 
@@ -602,12 +790,199 @@ const RENDER = {
   },
 };
 
+// ── Tasks: the real board's anatomy (check circle, chips, subtasks, counters, project filter) ──
+const T = { view: 'board', project: null, open: new Set([1]), q: '' };
+const COLS = [['inbox', 'Inbox', 'var(--text-muted)'], ['next', 'Next', 'var(--green)'], ['scheduled', 'Scheduled', 'var(--purple)'], ['waiting', 'Waiting', 'var(--yellow)'], ['done', 'Done', 'var(--blue)']];
+function taskMeta(t) {
+  return `<div class="tmeta">
+    ${t.due ? `<span class="duechip ${t.dueCls || ''}">◷ ${t.due}</span>` : ''}
+    ${t.pr === 'high' ? '<span class="hiflag">high</span>' : ''}
+    ${t.p ? `<span class="pill">${esc(t.p)}</span>` : ''}
+    ${t.e ? `<span class="tag">${t.e}</span>` : ''}
+    ${t.rec ? `<span class="recur" title="Repeats ${t.rec}">↻ ${t.rec}</span>` : ''}
+    ${(t.tags || []).map(g => `<span class="tag">#${g}</span>`).join('')}
+  </div>`;
+}
+function taskExtras(t) {
+  let h = '';
+  if (t.cnt) {
+    const [d, n] = t.cnt, pct = Math.round(d / n * 100);
+    h += `<div class="crow2"><span class="sbar"><i style="width:${pct}%"></i></span><span>${d}/${n}</span>
+      ${t.goal ? `<span class="today-goal ${t.goal[0] >= t.goal[1] ? 'met' : ''}" title="Today's goal">today ${t.goal[0]}/${t.goal[1]}</span>` : ''}
+      <button data-cnt="${t.id}" data-d="-1" title="Undo one">−</button><button class="inc" data-cnt="${t.id}" data-d="1" title="Count one done">+1</button></div>`;
+  }
+  if (t.kids) {
+    const done = t.kids.filter(k => k[1] === 'done').length, wait = t.kids.filter(k => k[1] === 'waiting').length, open = T.open.has(t.id);
+    h += `<div class="sprog" data-exp="${t.id}"><span>${open ? '▾' : '▸'}</span><span class="sbar"><i style="width:${Math.round(done / t.kids.length * 100)}%"></i></span><span>${done}/${t.kids.length}</span>${wait ? `<span style="color:var(--yellow)">⚠ ${wait}</span>` : ''}</div>`;
+    if (open) h += `<div class="slist">${t.kids.map(([k, st], i) => `<div class="srow"><span class="tcheck sub ${st === 'done' ? 'on' : ''}" data-sub="${t.id}:${i}">${st === 'done' ? '✓' : ''}</span><span class="${st === 'done' ? 'done' : ''}">${esc(k)}</span><span class="st ${st}">${st}</span></div>`).join('')}
+      <button class="sadd" data-toast="In the real hub this opens the task form with this task as the parent. You can also drag a card onto a task to make it a subtask.">+ subtask</button></div>`;
+  }
+  return h;
+}
+function taskCard(t) {
+  const done = t.s === 'done';
+  return `<div class="kcard2 p-${t.pr} ${done ? 'done' : ''}">
+    <div class="ktop"><span class="tcheck ${done ? 'on' : ''}" data-done="${t.id}" title="${done ? 'Completed' : 'Mark complete'}">${done ? '✓' : ''}</span><span class="tt">${esc(t.t)}</span></div>
+    ${taskMeta(t)}${taskExtras(t)}</div>`;
+}
+function renderTasks() {
+  const root = $('#tasksRoot'); if (!root) return;
+  const projects = [...new Set(TASKS.map(t => t.p).filter(Boolean))];
+  const vis = TASKS.filter(t => (!T.project || t.p === T.project) && (!T.q || t.t.toLowerCase().includes(T.q)));
+  const openCount = p => TASKS.filter(t => t.p === p && t.s !== 'done').length;
+  const noNext = p => !TASKS.some(t => t.p === p && t.s === 'next');
+  root.innerHTML = `
+    <div class="tbar"><span class="seg"><button class="${T.view === 'board' ? 'on' : ''}" data-tview="board">Board</button><button class="${T.view === 'list' ? 'on' : ''}" data-tview="list">List</button></span>
+      <span class="hint">Tick the circle to complete · open the subtask bar · +1 counts progress</span><span class="spacer"></span>
+      <input id="tq" placeholder="Search tasks…" value="${esc(T.q)}"><button class="btn primary" data-toast="In the real hub this opens the task form: title, project, status, priority, energy, due date, repeat, tags, notes, and today's goal for counted tasks.">+ New task</button></div>
+    <div class="pchips"><button class="pchip ${!T.project ? 'on' : ''}" data-proj="">All projects <b>${TASKS.filter(t => t.s !== 'done').length}</b></button>
+      ${projects.map(p => `<button class="pchip ${T.project === p ? 'on' : ''}" data-proj="${esc(p)}">${esc(p)} <b>${openCount(p)}</b>${noNext(p) ? '<span class="w" title="No next action">⚠</span>' : ''}</button>`).join('')}</div>
+    ${T.view === 'board'
+      ? `<div class="kb">${COLS.map(([k, label, c]) => { const ts = vis.filter(t => t.s === k); return `<div class="kcol"><div class="kcol-head"><span class="kd" style="background:${c}"></span>${label}<span class="n">${ts.length}</span><button data-toast="In the real hub: a new task, straight into this column.">+</button></div>${ts.length ? ts.map(taskCard).join('') : '<div class="small muted" style="text-align:center;padding:20px 0">Drop here</div>'}</div>`; }).join('')}</div>`
+      : `<div class="card tlist">${vis.map(t => `<div class="trow"><span class="tcheck ${t.s === 'done' ? 'on' : ''}" data-done="${t.id}">${t.s === 'done' ? '✓' : ''}</span><div><span class="tt" style="${t.s === 'done' ? 'text-decoration:line-through;color:var(--text-muted)' : ''}">${esc(t.t)}</span>${taskMeta(t).replace('class="tmeta"', 'class="tmeta" style="margin-left:0"')}${taskExtras(t).replaceAll('margin: 7px 0 0 26px', '')}</div><span class="pill ${t.s === 'waiting' ? 'yellow' : t.s === 'next' ? 'green' : ''}">${t.s}</span></div>`).join('')}</div>`}`;
+  const q = $('#tq'); q.addEventListener('input', () => { T.q = q.value.toLowerCase(); const pos = q.selectionStart; renderTasks(); const n = $('#tq'); n.focus(); n.setSelectionRange(pos, pos); });
+}
+function taskClick(t) {
+  if (t.dataset.tview) { T.view = t.dataset.tview; return renderTasks(), true; }
+  if (t.dataset.proj !== undefined) { T.project = t.dataset.proj || null; return renderTasks(), true; }
+  if (t.dataset.exp) { const id = +t.dataset.exp; T.open.has(id) ? T.open.delete(id) : T.open.add(id); return renderTasks(), true; }
+  if (t.dataset.done) {
+    const task = TASKS.find(x => x.id === +t.dataset.done);
+    if (task.s === 'done') { task.s = task._prev || 'next'; } else {
+      const open = (task.kids || []).filter(k => k[1] !== 'done').length;
+      task._prev = task.s; task.s = 'done';
+      toast(open ? `Completed, with ${open} subtask(s) still open. The real hub asks before doing this.` : task.rec ? `Done. It repeats ${task.rec}, so in the real hub its due date rolls forward instead of closing.` : 'Done. In the real hub this goes to the task database, and tomorrow\'s brief knows it.');
+    }
+    return renderTasks(), true;
+  }
+  if (t.dataset.sub) {
+    const [id, i] = t.dataset.sub.split(':').map(Number), k = TASKS.find(x => x.id === id).kids[i];
+    k[1] = k[1] === 'done' ? 'next' : 'done'; return renderTasks(), true;
+  }
+  if (t.dataset.cnt) {
+    const task = TASKS.find(x => x.id === +t.dataset.cnt), d = +t.dataset.d;
+    task.cnt[0] = Math.max(0, Math.min(task.cnt[1], task.cnt[0] + d));
+    if (task.goal) task.goal[0] = Math.max(0, task.goal[0] + d);
+    return renderTasks(), true;
+  }
+  return false;
+}
+
+// ── Literature: semantic search (faked ranking over a placeholder library) ──
+const CONCEPTS = {
+  ai: ['ai', 'artificial', 'machine', 'machines', 'robot', 'robots', 'bot', 'bots', 'chatbot', 'chatbots', 'algorithm', 'algorithms', 'automation', 'automated', 'agent', 'agents', 'computer', 'computers', 'llm', 'llms'],
+  trust: ['trust', 'trusting', 'distrust', 'reliance', 'rely', 'confidence', 'aversion', 'skeptical', 'suspicious'],
+  coop: ['cooperation', 'cooperate', 'cooperative', 'collaboration', 'collaborate', 'contribute', 'contributing', 'contribution', 'prosocial', 'sharing', 'shared', 'public', 'goods', 'free-riding', 'freeriding', 'stop'],
+  norm: ['norm', 'norms', 'convention', 'conventions', 'rules', 'expectations', 'expected', 'appropriate', 'sanction', 'punish', 'punishment'],
+  survey: ['survey', 'surveys', 'questionnaire', 'respondents', 'respondent', 'answers', 'attention', 'careless', 'panel', 'poll'],
+  synth: ['synthetic', 'simulated', 'simulate', 'simulation', 'fake', 'silicon', 'generated', 'language', 'model', 'models', 'gpt'],
+  group: ['group', 'groups', 'team', 'teams', 'teammates', 'collective', 'crowd', 'together', 'members', 'working'],
+  money: ['money', 'income', 'wage', 'payment', 'incentive', 'incentives', 'pay'],
+};
+const LIB = [
+  ['Placeholder Study of Cooperation in Mixed Human–AI Groups', 'Example & Sample 2026', { ai: 3, coop: 3, group: 3, trust: 1 }],
+  ['Algorithm Aversion in Placeholder Team Decisions', 'Author 2024', { ai: 3, trust: 3, group: 2 }],
+  ['When Do People Rely on Automated Advice? A Placeholder Meta-analysis', 'Writer et al. 2025', { ai: 3, trust: 3 }],
+  ['Silicon Samples: Can Language Models Stand In for Survey Respondents?', 'Person & Example 2025', { synth: 3, survey: 3, ai: 2 }],
+  ['Careless Responding in Online Panels: A Placeholder Review', 'Author, C. 2025', { survey: 3 }],
+  ['The Erosion of Contributions in Repeated Public Goods Games', 'Classic, A. 2002', { coop: 3, norm: 1, group: 2 }],
+  ['Punishment Sustains Placeholder Cooperation', 'Sample, B. 2006', { coop: 3, norm: 2 }],
+  ['Descriptive and Injunctive Norms, Revisited', 'Writer, D. 2023', { norm: 3 }],
+  ['Norm Spillover in Placeholder Online Communities', 'Writer & Person 2024', { norm: 3, group: 2 }],
+  ['Machine Teammates Change Human Norms: Placeholder Field Evidence', 'Example, E. 2026', { ai: 3, norm: 3, group: 2 }],
+  ['Simulating Economic Games with Language Models', 'Engineer, F. 2024', { synth: 3, coop: 2, ai: 2 }],
+  ['Paying Respondents: Incentives and Data Quality', 'Author, G. 2023', { survey: 2, money: 3 }],
+  ['Wage Effects of Workplace Automation (Placeholder)', 'Economist, H. 2025', { ai: 2, money: 3 }],
+  ['Collective Intelligence in Placeholder Online Crowds', 'Crowd, I. 2022', { group: 3, coop: 1 }],
+];
+function semSearch(q) {
+  const words = q.toLowerCase().match(/[a-z-]+/g) || [];
+  const hits = {}; for (const [c, list] of Object.entries(CONCEPTS)) if (words.some(w => list.includes(w))) hits[c] = 1;
+  const n = Object.keys(hits).length || 1;
+  return LIB.map(([t, a, m]) => {
+    let s = 0; for (const c in hits) s += (m[c] || 0) / 3; const shared = words.some(w => w.length > 3 && t.toLowerCase().includes(w));
+    return { t, a, score: Math.round(28 + 67 * s / n + (t.length % 5)), shared };
+  }).filter(r => r.score > 40).sort((x, y) => y.score - x.score).slice(0, 6);
+}
+function renderSearch(q) {
+  const out = $('#semOut'); if (!out) return;
+  if (!q.trim()) { out.innerHTML = ''; return; }
+  const res = semSearch(q);
+  out.innerHTML = res.length ? res.map(r => `
+    <div class="card paper" style="border-left-color:var(--accent)"><div><div class="t">${esc(r.t)}${r.shared ? '' : '<span class="nokw" title="Found by meaning. The title shares no word with your query.">no shared keyword</span>'}</div><div class="meta">${esc(r.a)}</div></div>
+    <div><div class="ring" style="background:conic-gradient(var(--accent) ${r.score * 3.6}deg, var(--line-soft) 0)"><div style="width:58px;height:58px;border-radius:50%;background:var(--surface);display:grid;place-items:center">${r.score}%</div></div><div class="match">match</div></div></div>`).join('')
+    : '<div class="card small muted">No matches. Try different or broader wording (in this tour the placeholder library is small).</div>';
+}
+
+// ── Literature: map (embedding layout, shelf blobs) ──
+const SHELVES = [
+  ['Human–AI cooperation', '#c9a25e', 230, 180, 16], ['Trust in automation', '#7d96b3', 430, 130, 11], ['Social norms', '#7fa07b', 190, 370, 14],
+  ['Survey methods', '#a07f9b', 620, 360, 10], ['LLM simulation', '#c0703a', 560, 210, 12], ['Collective behaviour', '#b04a42', 400, 420, 9],
+];
+let MAP = null;
+function buildMap() {
+  if (MAP) return MAP;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const nodes = []; SHELVES.forEach(([name, col, cx, cy, n], si) => { for (let i = 0; i < n; i++) { const a = rnd() * Math.PI * 2, r = Math.sqrt(rnd()) * 62; nodes.push({ si, x: cx + Math.cos(a) * r * 1.25, y: cy + Math.sin(a) * r, cites: Math.round(rnd() ** 3 * 400) }); } });
+  const edges = []; nodes.forEach((a, i) => nodes.forEach((b, j) => { if (j <= i) return; const d = Math.hypot(a.x - b.x, a.y - b.y); if ((a.si === b.si && d < 48) || (a.si !== b.si && d < 70 && rnd() < .35)) edges.push([i, j]); }));
+  nodes.forEach((nd, i) => nd.deg = edges.filter(e => e[0] === i || e[1] === i).length);
+  const hulls = SHELVES.map((_, si) => {
+    const pts = nodes.filter(n => n.si === si).map(n => [n.x, n.y]).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = []; for (const p of pts) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+    for (const p of [...pts].reverse()) { while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+    let h = lo.slice(0, -1).concat(up.slice(0, -1)); const cx = h.reduce((s, p) => s + p[0], 0) / h.length, cy = h.reduce((s, p) => s + p[1], 0) / h.length;
+    h = h.map(([x, y]) => { const d = Math.hypot(x - cx, y - cy) || 1; return [x + (x - cx) / d * 18, y + (y - cy) / d * 18]; });
+    for (let k = 0; k < 3; k++) { const o = []; h.forEach((p, i) => { const q = h[(i + 1) % h.length]; o.push([.75 * p[0] + .25 * q[0], .75 * p[1] + .25 * q[1]], [.25 * p[0] + .75 * q[0], .25 * p[1] + .75 * q[1]]); }); h = o; }
+    return { d: 'M' + h.map(p => p.map(v => v.toFixed(1)).join(',')).join('L') + 'Z', top: Math.min(...h.map(p => p[1])), cx };
+  });
+  return MAP = { nodes, edges, hulls };
+}
+let mapSize = 'cites', mapShelf = null;
+function renderMap() {
+  const host = $('#mapHost'); if (!host) return;
+  const { nodes, edges, hulls } = buildMap();
+  const r = n => mapSize === 'cites' ? 3 + Math.sqrt(n.cites) * .45 : 3 + n.deg * .7;
+  const dim = si => mapShelf !== null && si !== mapShelf ? 'dim' : '';
+  host.innerHTML = `<svg class="mapsvg" viewBox="60 40 700 460" role="img" aria-label="Literature map (placeholder)">
+    ${hulls.map((hh, si) => `<path d="${hh.d}" fill="${SHELVES[si][1]}" fill-opacity=".13" stroke="${SHELVES[si][1]}" stroke-opacity=".5" class="edge ${dim(si)}"/>`).join('')}
+    ${edges.map(([a, b]) => `<line class="edge ${mapShelf !== null && nodes[a].si !== mapShelf && nodes[b].si !== mapShelf ? 'dim' : ''}" x1="${nodes[a].x.toFixed(1)}" y1="${nodes[a].y.toFixed(1)}" x2="${nodes[b].x.toFixed(1)}" y2="${nodes[b].y.toFixed(1)}" stroke="#c9b48f" stroke-opacity=".16" stroke-width=".8"/>`).join('')}
+    ${nodes.map((n, i) => `<circle class="node ${dim(n.si)}" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${r(n).toFixed(1)}" fill="${SHELVES[n.si][1]}"><title>Placeholder paper ${i + 1} · ${SHELVES[n.si][0]} · ${n.cites} cites · ${n.deg} connections</title></circle>`).join('')}
+    ${hulls.map((hh, si) => `<text class="edge ${dim(si)}" x="${hh.cx.toFixed(1)}" y="${(hh.top - 6).toFixed(1)}" text-anchor="middle" fill="${SHELVES[si][1]}" font-family="Courier Prime, monospace" font-size="12" letter-spacing="1">${SHELVES[si][0].toUpperCase()}</text>`).join('')}
+  </svg>`;
+  $('#shelfList').innerHTML = `<div class="shelfrow ${mapShelf === null ? 'on' : ''}" data-shelf="">All shelves<span>${nodes.length}</span></div>` +
+    SHELVES.map(([name, col, , , n], si) => `<div class="shelfrow ${mapShelf === si ? 'on' : ''}" data-shelf="${si}"><i style="background:${col}"></i>${name}<span>${n}</span></div>`).join('');
+  document.querySelectorAll('[data-msize]').forEach(b => b.classList.toggle('on', b.dataset.msize === mapSize));
+}
+
+// ── Seminar hooks ──
+function bindSeminar() {
+  const conf = $('#lrConf'); if (!conf) return;
+  const label = v => (v >= 90 ? 'certain' : v >= 70 ? 'fairly sure' : v >= 40 ? 'unsure' : 'guessing') + ' · ' + v + '%';
+  conf.addEventListener('input', () => { $('#lrConfOut').textContent = label(+conf.value); });
+  $('#lrSubmit').addEventListener('click', () => {
+    const c = +conf.value, gap = c - 55;
+    $('#lrCalib').textContent = `You predicted ${c}% · scored 55 — ` + (gap > 15 ? `overconfident by ${gap}` : gap < -15 ? `underconfident by ${-gap}` : 'well calibrated');
+    $('#lrVerdict').classList.add('show');
+    $('#lrMargin').innerHTML = '<b style="color:var(--yellow)">partial</b><br>Repair: if student SES were centred on the school mean, what would the school-mean coefficient estimate?';
+  });
+  const check = () => {
+    const v = $('#drillIn').value.trim().toLowerCase();
+    $('#drillFb').innerHTML = /^collider( bias| stratification( bias)?)?$/.test(v) ? '<span style="color:var(--green)">Correct' + (v === 'collider bias' ? '' : ' — synonym accepted') + '.</span> Next review in 6 days.'
+      : v ? '<span style="color:#d9786f">Not quite.</span> The term is <b>collider bias</b>. It goes back into the drill for tomorrow.' : '';
+  };
+  $('#drillGo').addEventListener('click', check);
+  $('#drillIn').addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+}
+
 let current = 'home';
 function go(id) {
   current = id;
   $('#nav').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === id));
   $('#title').textContent = VIEWS.find(v => v.id === id).label;
   $('#view').innerHTML = RENDER[id]();
+  if (id === 'tasks') renderTasks();
+  if (id === 'learning') bindSeminar();
   window.scrollTo(0, 0);
   try { history.replaceState(null, '', '#' + id); } catch (e) {}
 }
@@ -617,14 +992,20 @@ $('#sbTickets').innerHTML = TICKETS.slice(0, 3).map(t => `<div class="tk"><span 
 $('#sbCrew').innerHTML = Object.values(AGENTS).flat().slice(0, 8).map(([id, , cad]) => `<div class="crow"><span class="led ${cad === 'on demand' ? 'od' : id === 'opportunity-scout' ? 'fail' : 'ok'}"></span>${id.replace('literature-', 'lit-').replace('project-task-', 'pt-')}<span>${cad === 'on demand' ? 'on-demand' : id === 'opportunity-scout' ? 'failed' : (2 + id.length % 7) + 'h ago'}</span></div>`).join('');
 
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-v],[data-go],[data-toast],[data-lt],[data-rate],[data-ans],[data-agent]');
+  const t = e.target.closest('[data-v],[data-go],[data-toast],[data-lt],[data-rate],[data-ans],[data-agent],[data-tview],[data-proj],[data-exp],[data-done],[data-sub],[data-cnt],[data-q],[data-shelf],[data-msize]');
   if (!t) return;
+  if (taskClick(t)) return;
+  if (t.dataset.q) { $('#semQ').value = t.dataset.q; return renderSearch(t.dataset.q); }
+  if (t.dataset.shelf !== undefined) { mapShelf = t.dataset.shelf === '' ? null : +t.dataset.shelf; return renderMap(); }
+  if (t.dataset.msize) { mapSize = t.dataset.msize; return renderMap(); }
   if (t.dataset.v) return go(t.dataset.v);
   if (t.dataset.go) return go(t.dataset.go);
   if (t.dataset.toast) return toast(t.dataset.toast);
   if (t.dataset.lt !== undefined) {
     document.querySelectorAll('#litTabs button').forEach(b => b.classList.toggle('on', b === t));
     document.querySelectorAll('[data-lp]').forEach(p => p.classList.toggle('hidden', p.dataset.lp !== t.dataset.lt));
+    if (t.dataset.lt === '5') renderMap();
+    if (t.dataset.lt === '4') { const i = $('#semQ'); i.focus(); if (!i._b) { i._b = 1; i.addEventListener('keydown', e => { if (e.key === 'Enter') renderSearch(i.value); }); $('#semGo').addEventListener('click', () => renderSearch(i.value)); } }
     return;
   }
   if (t.dataset.rate !== undefined) {
