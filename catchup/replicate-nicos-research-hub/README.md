@@ -7,7 +7,7 @@ workflow from the 13:15 demo. This folder is for them.
 |---|---|
 | `research-hub-explained.md` / `.pdf` | How the hub and the literature workflow work, how they grew, and the principles behind them. Read this first |
 | `hub-tour/index.html` | A clickable copy of the hub's dashboard, filled with placeholder data. Browse it to see what each part does and pick what you want for yourself |
-| `agents/` | Six of Nico's subagent definitions, made generic: copy one into `.claude/agents/` and fill in the placeholders |
+| `agents/` | Seven of Nico's subagent definitions, made generic: copy one into `.claude/agents/` and fill in the placeholders |
 | `start-with-your-agent.md` | Instructions for Claude: it interviews you and builds the first small piece of your own version with you |
 
 ## Getting started with your agent
