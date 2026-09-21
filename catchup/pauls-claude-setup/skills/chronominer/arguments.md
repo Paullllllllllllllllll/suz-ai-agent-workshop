@@ -1,11 +1,13 @@
 # ChronoMiner — CLI Arguments
 
-### Main Extraction (`main/extract.py`)
-```
+## Main Extraction (`main/extract.py`)
+
+```bash
 uv run python main/extract.py --schema <SchemaName> --input <path> [options]
 ```
 
 **All CLI arguments:**
+
 | Argument | Type / Choices | Default | Description |
 |---|---|---|---|
 | `--schema` | string | (required) | Schema name (e.g., `BibliographicEntries`) |
@@ -38,19 +40,23 @@ uv run python main/extract.py --schema <SchemaName> --input <path> [options]
 | `--json` | flag | off | Emit a one-line JSON run summary on stdout at completion |
 | `--dry-run` | flag | off | Discover inputs, classify resume state, and report planned actions; zero API calls or side effects |
 
-`--first-n-chunks`, `--last-n-chunks`, and `--page-range` are mutually exclusive. `--force` takes precedence over `--resume`. `--interactive` and `--non-interactive` are mutually exclusive.
+`--first-n-chunks`, `--last-n-chunks`, and `--page-range` are mutually
+exclusive. `--force` takes precedence over `--resume`. `--interactive` and
+`--non-interactive` are mutually exclusive.
 
-### Exit codes and automation
+## Exit codes and automation
 
 `extract.py`: `0` every file completed (or already complete); `1`
 one or more files failed or completed partially; `2` usage/configuration
 error or interactive mode requested without a TTY; `130` interrupted
 (Ctrl+C).
 
-### Check Batches (`main/check_batches.py`)
-```
+## Check Batches (`main/check_batches.py`)
+
+```bash
 uv run python main/check_batches.py [--schema <name>] [--input <dir>] [--verbose] [--json] [--interactive | --non-interactive]
 ```
+
 Lists all batch jobs with status; automatically downloads and processes
 completed batches; merges auto-split `_part{n}` submissions back into one
 final output. `--json` prints a one-line JSON status summary
@@ -62,16 +68,20 @@ configured, so `--input` on a foreign directory no longer silently stamps the
 first configured schema (legacy artifacts without a recorded schema fall back
 to the assumption with a warning).
 
-### Cancel Batches (`main/cancel_batches.py`)
-```
+## Cancel Batches (`main/cancel_batches.py`)
+
+```bash
 uv run python main/cancel_batches.py [--force] [--interactive | --non-interactive]
 ```
+
 Cancels non-terminal batches. `--force` skips the confirmation prompt.
 
-### Repair Extractions (`main/repair.py`)
-```
+## Repair Extractions (`main/repair.py`)
+
+```bash
 uv run python main/repair.py [--schema <name>] [--files f1.jsonl f2.jsonl ...] [--force] [--verbose] [--interactive | --non-interactive]
 ```
+
 Discovers incomplete jobs, recovers batch IDs from debug artifacts, retrieves
 responses, and regenerates outputs. Provider-agnostic: status checks and
 result retrieval route through each batch's own backend, so no
@@ -80,14 +90,19 @@ regenerated output is marked `fully_completed` only when no batch failed, is
 missing, or is still running; a repair over pending batches is marked
 re-runnable with a warning instead of being finalized prematurely.
 
-### Generate Line Ranges (`main/generate_line_ranges.py`)
-```
+## Generate Line Ranges (`main/generate_line_ranges.py`)
+
+```bash
 uv run python main/generate_line_ranges.py --input <path> [--tokens N] [--first-n-chunks N | --last-n-chunks N] [--verbose]
 ```
+
 Creates `{filename}_line_ranges.txt` with token-based chunk boundaries.
 
-### Adjust Line Ranges (`main/adjust_line_ranges.py`)
-```
+## Adjust Line Ranges (`main/adjust_line_ranges.py`)
+
+```bash
 uv run python main/adjust_line_ranges.py --input <path> --schema <name> [--context-window N] [--prompt-path <path>] [--resume] [--force] [--model M] [--reasoning-effort {low,medium,high,xhigh,none}] [--max-output-tokens N] [--temperature T] [--top-p P] [--first-n-chunks N | --last-n-chunks N]
 ```
-LLM-powered semantic boundary detection with certainty scoring and automatic retry. `--input` and `--schema` are both required.
+
+LLM-powered semantic boundary detection with certainty scoring and
+automatic retry. `--input` and `--schema` are both required.

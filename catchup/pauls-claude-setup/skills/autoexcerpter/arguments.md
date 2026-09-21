@@ -70,4 +70,6 @@ directory resolves to more than one discovered item, CLI mode now requires
 `--all` or `--select` -- omitting both exits 2 instead of silently processing
 only the first item.
 
-CLI arguments apply runtime overrides to `model.yaml` and `app.yaml` without modifying files on disk. Concurrency, retry, rate-limit, citation, and token-limit settings remain config-only and are not exposed via CLI.
+CLI arguments apply runtime overrides to `model.yaml` and `app.yaml` without
+modifying files on disk. Concurrency, retry, rate-limit, citation, and
+token-limit settings remain config-only and are not exposed via CLI.

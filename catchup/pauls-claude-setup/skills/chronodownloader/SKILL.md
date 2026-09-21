@@ -63,7 +63,9 @@ argument-hint: "<csv-file> | --id IDENTIFIER [--provider KEY] | --iiif URL [--op
 
 ## CLI Usage
 
-All commands run from the ChronoDownloader project root using `uv run python`. Entry point is the `main.cli` module, invoked as `python -m main.cli`.
+All commands run from the ChronoDownloader project root using
+`uv run python`. Entry point is the `main.cli` module, invoked as
+`python -m main.cli`.
 
 Relative paths (the positional CSV, `--output_dir`) resolve against the
 current working directory — run from the project root as instructed, or pass
@@ -110,7 +112,8 @@ uv run python -m main.cli --iiif URL --name MyWork --dry-run
 
 ### Identifier-Based Download
 
-Download by provider-specific identifier instead of a full manifest URL. Simpler for agents -- just pass the item ID.
+Download by provider-specific identifier instead of a full manifest URL.
+Simpler for agents -- just pass the item ID.
 
 ```bash
 # With explicit provider
@@ -235,7 +238,9 @@ uv run python -m main.cli --id bpt6k1511262r --name Taillevent --output_dir ./do
 uv run python -m main.cli works.csv --non-interactive --json --output_dir ./downloads
 ```
 
-CLI invocations are auto-detected from command-style arguments (`--iiif`, `--id`, `--dry-run`, `--verify`, `--json`, a positional CSV path, etc.), so agents need not toggle `interactive_mode` in config first.
+CLI invocations are auto-detected from command-style arguments (`--iiif`,
+`--id`, `--dry-run`, `--verify`, `--json`, a positional CSV path, etc.), so
+agents need not toggle `interactive_mode` in config first.
 
 ## All CLI Arguments
 
@@ -243,14 +248,15 @@ CLI invocations are auto-detected from command-style arguments (`--iiif`, `--id`
 
 ## CSV Input Format
 
-**Required columns**: `entry_id` (always required); `short_title` (required unless `direct_link` is present)
+**Required columns**: `entry_id` (always required); `short_title` (required
+unless `direct_link` is present)
 
 **Optional columns**: `main_author`, `year` (publication year sought;
 activates the edition-year ranking penalty via `selection.year_tolerance`),
 `retrievable` (download status: `True`/`False`/`deferred`/empty;
 auto-updated; German-locale Excel `WAHR`/`FALSCH` are recognized, and
-CRLF/BOM Excel round-trips are preserved), `link` (item URL; auto-populated), `direct_link` (IIIF
-manifest URL for direct download)
+CRLF/BOM Excel round-trips are preserved), `link` (item URL;
+auto-populated), `direct_link` (IIIF manifest URL for direct download)
 
 The works CSV is the authoritative status ledger. `deferred` marks a
 quota-deferred work (distinct from `False`/failed); it counts as pending and
@@ -276,30 +282,52 @@ entry_id,short_title,main_author,direct_link
 2,,Unknown,https://gallica.bnf.fr/iiif/ark:/12148/bpt6k5678/manifest.json
 ```
 
-After processing, `retrievable` and `link` columns are updated in-place (thread-safe). Additional columns `download_provider` and `download_timestamp` may be added.
+After processing, `retrievable` and `link` columns are updated in-place
+(thread-safe). Additional columns `download_provider` and
+`download_timestamp` may be added.
 
 ## Configuration (config.json)
 
-Full config reference and recommended defaults: see REFERENCE.md in this folder.
+Full config reference and recommended defaults: see REFERENCE.md in this
+folder.
 
-An optional `api_keys.json` placed next to the resolved `config.json` can remap each provider's API key to a custom environment-variable name (e.g. `europeana` -> `EUROPEANA_API_KEY_2`); the built-in default names apply when the file or a provider entry is omitted.
+An optional `api_keys.json` placed next to the resolved `config.json` can
+remap each provider's API key to a custom environment-variable name (e.g.
+`europeana` -> `EUROPEANA_API_KEY_2`); the built-in default names apply
+when the file or a provider entry is omitted.
 
 ## Direct IIIF Mode
 
 Four ways to trigger direct downloads (bypassing provider search):
 
-1. **Identifier**: `--id IDENTIFIER [--provider KEY] [--name STEM]` (auto-detects provider when possible)
-2. **CLI flag**: `--iiif URL [--name STEM]` (repeatable for multiple manifests)
-3. **CSV column**: Add a `direct_link` column with IIIF manifest URLs; rows with a `direct_link` value are downloaded directly
+1. **Identifier**: `--id IDENTIFIER [--provider KEY] [--name STEM]`
+   (auto-detects provider when possible)
+2. **CLI flag**: `--iiif URL [--name STEM]` (repeatable for multiple
+   manifests)
+3. **CSV column**: Add a `direct_link` column with IIIF manifest URLs; rows
+   with a `direct_link` value are downloaded directly
 4. **Interactive mode**: Select "Direct IIIF Download" from the mode menu
 
-Direct IIIF supports IIIF Presentation API v2 and v3, manifest renderings (PDF/EPUB), and URL pattern caching to avoid redundant 400 errors across pages. IIIF works record `pages_expected`/`pages_downloaded` in `work.json` and are marked `partial` (not `completed`) unless every expected page arrived.
+Direct IIIF supports IIIF Presentation API v2 and v3, manifest renderings
+(PDF/EPUB), and URL pattern caching to avoid redundant 400 errors across
+pages. IIIF works record `pages_expected`/`pages_downloaded` in `work.json`
+and are marked `partial` (not `completed`) unless every expected page
+arrived.
 
-Renderings take precedence over page images by default. With the shipped `prefer_pdf_over_images: true`, a manifest that advertises an `application/pdf` rendering (Internet Archive, Wellcome, the DFG viewer) produces one PDF and no images, and the work is recorded `completed` with `pages_expected`/`pages_downloaded` unset. When you want the page images, pass `--images-only` (v1.27.0), which clears both keys for the run; `--no-prefer-pdf-over-images` alone fetches both and does not save the PDF transfer. Preview with `--dry-run` first — a non-empty `rendering_formats` in the manifest preview means the PDF path will win. See arguments.md for the full flag semantics.
+Renderings take precedence over page images by default. With the shipped
+`prefer_pdf_over_images: true`, a manifest that advertises an
+`application/pdf` rendering (Internet Archive, Wellcome, the DFG viewer)
+produces one PDF and no images, and the work is recorded `completed` with
+`pages_expected`/`pages_downloaded` unset. When you want the page images,
+pass `--images-only` (v1.27.0), which clears both keys for the run;
+`--no-prefer-pdf-over-images` alone fetches both and does not save the PDF
+transfer. Preview with `--dry-run` first — a non-empty `rendering_formats`
+in the manifest preview means the PDF path will win. See arguments.md for
+the full flag semantics.
 
 ## Output Structure
 
-```
+```text
 downloaded_works/
   index.csv                           # Tracks all processed works
   <entry_id>_<work_name>/
@@ -325,4 +353,6 @@ different editions of the same title keep separate rows; reprocessing updates
 the row in place rather than appending a duplicate); `status` is one of
 `completed`, `partial`, `failed`, `deferred`, `no_match`.
 
-The source CSV is updated in place: `retrievable` set to `True`/`False`/`deferred`, `link` populated with the item URL, and `download_provider` / `download_timestamp` columns added.
+The source CSV is updated in place: `retrievable` set to
+`True`/`False`/`deferred`, `link` populated with the item URL, and
+`download_provider` / `download_timestamp` columns added.

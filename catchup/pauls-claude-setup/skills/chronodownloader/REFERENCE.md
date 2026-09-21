@@ -29,7 +29,8 @@ Per-provider rate limiting and behavior. Each provider may have:
 - `network`: `{ delay_ms, jitter_ms, max_attempts, base_backoff_s, backoff_multiplier,
   max_backoff_s, timeout_s, headers, circuit_breaker_enabled, circuit_breaker_threshold,
   circuit_breaker_cooldown_s, ssl_error_policy }`
-- `quota` (quota-limited providers only): `{ enabled, daily_limit, reset_hours, wait_for_reset }`
+- `quota` (quota-limited providers only):
+  `{ enabled, daily_limit, reset_hours, wait_for_reset }`
 - Google Books extras: `free_only`, `prefer`, `allow_drm`
 
 ### 4. download

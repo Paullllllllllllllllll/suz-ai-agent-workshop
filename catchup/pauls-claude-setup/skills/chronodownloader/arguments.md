@@ -1,9 +1,12 @@
 # ChronoDownloader — CLI Arguments
 
 **Positional**:
-- `csv_file` (optional): Path to CSV file. Must contain `short_title` or `direct_link` (with required `entry_id`).
+
+- `csv_file` (optional): Path to CSV file. Must contain `short_title` or
+  `direct_link` (with required `entry_id`).
 
 **General options**:
+
 - `--output_dir DIR`: Output directory (default: `downloaded_works`)
 - `--dry-run`: Run searches and select candidates, but skip downloads. Fully
   side-effect-free: writes no work directories, `work.json`, or `index.csv`
@@ -19,6 +22,7 @@
   then exit
 
 **Search only** (no downloads, fully side-effect-free):
+
 - `--search TITLE`: Search all enabled providers for a title and print
   structured candidate metadata (ranked table; NDJSON with `--json`). No CSV
   needed.
@@ -29,14 +33,21 @@
   queried work matched; `1` if any had no match.
 
 **Direct IIIF**:
-- `--iiif URL`: IIIF manifest URL to download (repeatable for multiple manifests). Bypasses CSV and search.
+
+- `--iiif URL`: IIIF manifest URL to download (repeatable for multiple
+  manifests). Bypasses CSV and search.
 - `--name STEM`: Output name stem for IIIF and identifier downloads (e.g., `Taillevent_Viandier`)
 
 **Identifier-based download**:
-- `--id IDENTIFIER`: Provider-specific item identifier (e.g., `bsb11280551` for MDZ, `bpt6k1511262r` for Gallica). Bypasses CSV and search.
-- `--provider KEY`: Provider key for `--id` lookup (e.g., `mdz`, `bnf_gallica`, `internet_archive`). Optional when auto-detection can infer the provider from the identifier format.
+
+- `--id IDENTIFIER`: Provider-specific item identifier (e.g., `bsb11280551`
+  for MDZ, `bpt6k1511262r` for Gallica). Bypasses CSV and search.
+- `--provider KEY`: Provider key for `--id` lookup (e.g., `mdz`,
+  `bnf_gallica`, `internet_archive`). Optional when auto-detection can infer
+  the provider from the identifier format.
 
 **Quota / utility**:
+
 - `--quota-status`: Display quota and deferred queue status, then exit.
   Honors `--config`.
 - `--status`: Display works-CSV progress (pass `csv_file`) plus quota and
@@ -46,11 +57,13 @@
 - `--list-providers`: List all available provider keys and exit
 
 **Provider selection overrides**:
+
 - `--providers KEYS`: Comma-separated provider keys to use (replaces config set)
 - `--enable-provider KEYS`: Force-enable provider(s) (comma-separated or repeat flag)
 - `--disable-provider KEYS`: Force-disable provider(s) (comma-separated or repeat flag)
 
 **Processing scope**:
+
 - `--pending-mode {all,new,failed}`: Which CSV rows to process. `all`
   (default) processes everything not `completed` (pending + failed +
   deferred, via `get_pending_works`); `new` only never-tried (empty status)
@@ -62,6 +75,7 @@
 - `--limit N`: Process at most N pending rows after filters
 
 **Runtime config overrides** (concurrency remains config-only):
+
 - `--resume-mode {skip_completed,reprocess_all,skip_if_has_objects,resume_from_csv}`
 - `--selection-strategy {collect_and_select,sequential_first_hit}`
 - `--min-title-score FLOAT`: Minimum PURE title-match score (0-100) required

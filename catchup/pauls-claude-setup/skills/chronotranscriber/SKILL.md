@@ -7,7 +7,13 @@ argument-hint: "--type <type> --method <method> --input <path> [--options]"
 
 # ChronoTranscriber Skill
 
-ChronoTranscriber transforms historical documents, academic papers, and ebooks into searchable, structured text using AI models or local Tesseract OCR. Multi-provider LLM support via LangChain (OpenAI, Anthropic, Google, OpenRouter, custom endpoints); multi-format output (txt, md, json); prompt caching across all providers; batch processing with 50% cost savings (OpenAI). Since v3.0.0 it also transcribes audio recordings (speech-to-text) via the OpenAI audio API, Gemini, or local faster-whisper.
+ChronoTranscriber transforms historical documents, academic papers, and
+ebooks into searchable, structured text using AI models or local Tesseract
+OCR. Multi-provider LLM support via LangChain (OpenAI, Anthropic, Google,
+OpenRouter, custom endpoints); multi-format output (txt, md, json); prompt
+caching across all providers; batch processing with 50% cost savings
+(OpenAI). Since v3.0.0 it also transcribes audio recordings
+(speech-to-text) via the OpenAI audio API, Gemini, or local faster-whisper.
 
 **Repository**: `<CHRONOTRANSCRIBER_DIR>`
 
@@ -28,8 +34,11 @@ ChronoTranscriber transforms historical documents, academic papers, and ebooks i
 - One API key env var: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOOGLE_API_KEY`,
   or `OPENROUTER_API_KEY`
 - Tesseract OCR (optional, for offline `--method tesseract`)
-- FFmpeg (optional, on system PATH; auto-fallback for JPEG2000 files with sub-8-bit/bilevel codestreams that openjpeg cannot decode, and required for audio only when chunking long recordings or using `--pages` on audio)
-- faster-whisper (optional, for offline `--method whisper`; install via `uv sync --extra audio`; first run downloads the configured model)
+- FFmpeg (optional, on system PATH; auto-fallback for JPEG2000 files with
+  sub-8-bit/bilevel codestreams that openjpeg cannot decode, and required
+  for audio only when chunking long recordings or using `--pages` on audio)
+- faster-whisper (optional, for offline `--method whisper`; install via
+  `uv sync --extra audio`; first run downloads the configured model)
 
 ## CLI Usage
 
@@ -105,7 +114,7 @@ in-progress resume (the tool detects the drift and restarts the item). Audio
 is sync-only: `--batch` is warned about and ignored. `repair.py`
 does not cover audio; use `--retry-errors` instead.
 
-```
+```bash
 PY main/transcribe.py --non-interactive --type audio --method audio-api --input /abs/path/recordings --output /abs/path/transcripts
 PY main/transcribe.py --non-interactive --type audio --method whisper --input /abs/path/recordings --output /abs/path/transcripts
 ```
@@ -120,21 +129,30 @@ Six config files, each with a tracked `.example.yaml` sibling; the sixth,
 language hints, chunking, local-whisper, ffmpeg, and the speech
 postprocessing profile.
 
-The optional `api_keys_config.yaml` remaps each provider's API key to a custom environment variable name (e.g. `openai: OPENAI_API_KEY_2`), with the default env var names applying when the file or a provider entry is omitted.
+The optional `api_keys_config.yaml` remaps each provider's API key to a
+custom environment variable name (e.g. `openai: OPENAI_API_KEY_2`), with
+the default env var names applying when the file or a provider entry is
+omitted.
 
-Full config reference and recommended defaults: see REFERENCE.md in this folder.
+Full config reference and recommended defaults: see REFERENCE.md in this
+folder.
 
 ## Context Files
 
-Hierarchical context resolution (most specific wins), using the `_transcr_context` filename suffix:
+Hierarchical context resolution (most specific wins), using the
+`_transcr_context` filename suffix:
 
-1. **File-specific**: `{input_stem}_transcr_context.txt` next to the input file
-2. **Folder-specific**: `{parent_folder}_transcr_context.txt` next to the input's parent folder
+1. **File-specific**: `{input_stem}_transcr_context.txt` next to the input
+   file
+2. **Folder-specific**: `{parent_folder}_transcr_context.txt` next to the
+   input's parent folder
 3. **General fallback**: `context/transcr_context.txt` in the project root
 
-Keep context files under 4,000 characters. Can also be passed via `--context <path>`.
+Keep context files under 4,000 characters. Can also be passed via
+`--context <path>`.
 
-For context **images** (sent alongside each page image), the same hierarchy applies with the `_transcr_context_image` suffix:
+For context **images** (sent alongside each page image), the same
+hierarchy applies with the `_transcr_context_image` suffix:
 
 1. **File-specific**: `{input_stem}_transcr_context_image.{ext}`
 2. **Folder-specific**: `{parent_folder}_transcr_context_image.{ext}`
@@ -161,14 +179,19 @@ audio requires ffmpeg.
 
 ## Resume & Overwrite
 
-Precedence: CLI flag (`--resume` / `--force`) > `general.resume_mode` in `paths_config.yaml` > hardcoded default (`skip`).
+Precedence: CLI flag (`--resume` / `--force`) > `general.resume_mode` in
+`paths_config.yaml` > hardcoded default (`skip`).
 
 Resume (skip mode) operates at two levels:
 
-1. **File-level**: If the final output file exists, the entire file is skipped.
-2. **Page-level**: If a partial `.jsonl` tracking file exists, only remaining pages are transcribed.
+1. **File-level**: If the final output file exists, the entire file is
+   skipped.
+2. **Page-level**: If a partial `.jsonl` tracking file exists, only
+   remaining pages are transcribed.
 
-Use `--force` / `--overwrite` to reprocess all files. Use `--resume` to explicitly enforce skip mode (e.g. when config has `resume_mode: overwrite`).
+Use `--force` / `--overwrite` to reprocess all files. Use `--resume` to
+explicitly enforce skip mode (e.g. when config has
+`resume_mode: overwrite`).
 
 By default, pages left as `[transcription error]` count as done and are
 **not** retried on resume. Pass `--retry-errors` to re-attempt them on the
@@ -182,9 +205,11 @@ filtering and resume (`page_2` before `page_10`).
 
 ## Batch Management
 
-Batch processing submits async jobs (OpenAI, Anthropic, Google; not OpenRouter). Typically completes within 24 hours; 50% cost reduction on OpenAI.
+Batch processing submits async jobs (OpenAI, Anthropic, Google; not
+OpenRouter). Typically completes within 24 hours; 50% cost reduction on
+OpenAI.
 
-```
+```bash
 PY main/transcribe.py --type pdfs --method gpt --batch --input ./archive --output ./results
 PY main/transcribe.py --type pdfs --method gpt --batch --sync-fallback --input ./archive --output ./results
 PY main/check_batches.py                       # Check status; auto-downloads completed results
@@ -195,7 +220,8 @@ PY main/cancel_batches.py --batch-ids batch_123 # Cancel specific batch(es); rou
 PY main/repair.py --transcription ./results/doc_transcription.txt --errors-only
 ```
 
-Output files: `*_transcription.{txt,md,json}` (final), `*_temporary.jsonl` (tracking), `*_batch_submission_debug.json` (metadata).
+Output files: `*_transcription.{txt,md,json}` (final), `*_temporary.jsonl`
+(tracking), `*_batch_submission_debug.json` (metadata).
 
 **Batch hardening behavior:**
 
@@ -215,9 +241,11 @@ Output files: `*_transcription.{txt,md,json}` (final), `*_temporary.jsonl` (trac
 
 ## Post-Processing
 
-Standalone text cleanup for transcription output. Can also be configured in `paths_config.yaml` under `postprocessing:` and applied automatically during transcription.
+Standalone text cleanup for transcription output. Can also be configured in
+`paths_config.yaml` under `postprocessing:` and applied automatically
+during transcription.
 
-```
+```bash
 PY main/postprocess.py --input results/doc_transcription.txt --in-place --merge-hyphenation
 PY main/postprocess.py --input results/ --recursive --in-place --auto-wrap
 PY main/postprocess.py --input doc.txt --in-place --wrap-width 100 --max-blank-lines 1
@@ -227,13 +255,30 @@ PY main/postprocess.py --input doc.txt --use-config --in-place
 ## Key Architecture Notes
 
 - **Output writing**: handled by `modules/postprocess/writer.py`.
-- **LLM providers**: `modules/llm/providers/` (openai, anthropic, google, openrouter) with the centralized capability registry in `modules/config/capabilities/` (`registry.py`, `detection.py`, `params.py`).
-- **MOBI/KFX support**: covers unencrypted MOBI, AZW, AZW3, and KFX files via `--type mobis --method native`.
-- **FFmpeg fallback**: JPEG2000 images with sub-8-bit codestreams are automatically decoded via FFmpeg when openjpeg fails; no configuration needed if FFmpeg is on PATH.
-- **Original image detail**: GPT-5.4+ models support `original` detail mode (full-resolution image input without tiling), set via `llm_detail: original` in `image_processing_config.yaml`.
-- **Prompt caching**: reduces input token costs and latency. Anthropic uses explicit `cache_control` annotations; OpenAI uses automatic prefix caching with optional retention extension; Google is fully automatic; OpenRouter passes through provider-native signals.
-- **Custom endpoints**: `modules/llm/providers/custom_provider.py` supports self-hosted OpenAI-compatible endpoints in three modes: structured output, JSON-instructed, and plain text. Configured via `provider: custom` and `custom_endpoint:` block in `model_config.yaml`.
-- **Schemas**: in `schemas/` directory. Default: `markdown_transcription_schema.json`. Also: `plain_text_transcription_schema.json`, `plain_text_transcription_with_markers_schema.json`.
+- **LLM providers**: `modules/llm/providers/` (openai, anthropic, google,
+  openrouter) with the centralized capability registry in
+  `modules/config/capabilities/` (`registry.py`, `detection.py`,
+  `params.py`).
+- **MOBI/KFX support**: covers unencrypted MOBI, AZW, AZW3, and KFX files
+  via `--type mobis --method native`.
+- **FFmpeg fallback**: JPEG2000 images with sub-8-bit codestreams are
+  automatically decoded via FFmpeg when openjpeg fails; no configuration
+  needed if FFmpeg is on PATH.
+- **Original image detail**: GPT-5.4+ models support `original` detail
+  mode (full-resolution image input without tiling), set via
+  `llm_detail: original` in `image_processing_config.yaml`.
+- **Prompt caching**: reduces input token costs and latency. Anthropic uses
+  explicit `cache_control` annotations; OpenAI uses automatic prefix
+  caching with optional retention extension; Google is fully automatic;
+  OpenRouter passes through provider-native signals.
+- **Custom endpoints**: `modules/llm/providers/custom_provider.py` supports
+  self-hosted OpenAI-compatible endpoints in three modes: structured
+  output, JSON-instructed, and plain text. Configured via
+  `provider: custom` and `custom_endpoint:` block in `model_config.yaml`.
+- **Schemas**: in `schemas/` directory. Default:
+  `markdown_transcription_schema.json`. Also:
+  `plain_text_transcription_schema.json`,
+  `plain_text_transcription_with_markers_schema.json`.
 - **Token-budget state**: the daily token counter persists under a
   user-level state directory, `~/.chronotranscriber/token_state.json` by
   default (`modules/infra/token_budget.py`), not the CWD. Override via

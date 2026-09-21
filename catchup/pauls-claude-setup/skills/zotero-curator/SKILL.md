@@ -176,8 +176,9 @@ batches per the user's cadence; checkpoint after each batch. Give each subagent
 its chunk **and the full `tag_vocabulary.yaml`**. Each subagent, per work:
 
 1. Read the companion (`.txt` head or `_summary.md`) if present, else the PDF
-   front matter (title page, verso, TOC, first ~15 pp.) via pymupdf/Read,
-   plus the title/abstract and `existing_auto_tags` as hints.
+   front matter (title page, verso, TOC, first ~15 pp.) via pypdf (installed
+   in this skill's environment) or the Read tool, plus the title/abstract
+   and `existing_auto_tags` as hints.
 2. Map the work to EXISTING `facet::value` tags (topic, period, region,
    source-type, project, method, discipline, lang). Where an old auto-tag
    (e.g. a Library of Congress heading such as "Emigration and immigration")

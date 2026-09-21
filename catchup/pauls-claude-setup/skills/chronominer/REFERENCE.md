@@ -162,7 +162,8 @@ daily_token_limit:
 
 Tracks every API call, resets at 00:01 UTC (one minute after OpenAI's
 00:00 UTC free-token reset), displays usage at startup/completion, and
-pauses when budget is exhausted (resumes after reset or Ctrl+C). For Anthropic, cache-specific tokens are also tracked.
+pauses when budget is exhausted (resumes after reset or Ctrl+C). For
+Anthropic, cache-specific tokens are also tracked.
 Chunk-level token counting uses the target model's own encoding when known.
 Usage is stamped per (provider, key env var, pool) into the shared ledger;
 a pool is a named model set sharing one daily allowance per key, definable

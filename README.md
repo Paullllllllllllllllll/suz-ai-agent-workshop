@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.6.0
+# SUZ AI Agent Workshop v0.6.1
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -51,6 +51,12 @@ catchup/       after the workshop: slides, how to build your own research hub,
 ```
 
 ## Changelog
+
+- **v0.6.1** (21 September 2026) -- fixes in `catchup/pauls-claude-setup/`.
+  `zotero-curator` Mode C now reads PDFs with pypdf, which its environment
+  installs, instead of pymupdf, which it does not. The four tool skills,
+  `writing-great-skills`, and `zotero-curator` now pass the repository's
+  markdownlint configuration; the text itself is unchanged.
 
 - **v0.6.0** (21 September 2026) -- `catchup/pauls-claude-setup/`, a
   depersonalized copy of Paul's Claude Code configuration laid out like

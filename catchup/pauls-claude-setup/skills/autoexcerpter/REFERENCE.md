@@ -87,8 +87,9 @@ summary_model:
   temperature: 1.0
 ```
 
-Provider detection: explicit `"provider:model"` format or automatic inference from model name prefix
-(gpt- = openai, claude- = anthropic, gemini- = google, contains `/` = openrouter).
+Provider detection: explicit `"provider:model"` format or automatic
+inference from model name prefix (gpt- = openai, claude- = anthropic,
+gemini- = google, contains `/` = openrouter).
 
 ## concurrency.yaml -- API concurrency, rate limits, retries
 
@@ -213,5 +214,5 @@ text_cleaning:
     fixed_width: 80                # Used if auto_width is false
 ```
 
-The correct provider-specific image preprocessing section is auto-selected at runtime based on
-the configured provider and model name.
+The correct provider-specific image preprocessing section is auto-selected
+at runtime based on the configured provider and model name.

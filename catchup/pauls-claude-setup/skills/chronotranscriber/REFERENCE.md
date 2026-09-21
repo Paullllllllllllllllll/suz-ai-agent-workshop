@@ -25,8 +25,9 @@ transcription_model:
   # service_tier: configured in concurrency_config.yaml
 ```
 
-GPT-5.4+ models support `original` image detail mode (full-resolution, no tiling), configured via
-`llm_detail: original` in `image_processing_config.yaml` under `api_image_processing`.
+GPT-5.4+ models support `original` image detail mode (full-resolution, no
+tiling), configured via `llm_detail: original` in
+`image_processing_config.yaml` under `api_image_processing`.
 
 ## paths_config.yaml
 

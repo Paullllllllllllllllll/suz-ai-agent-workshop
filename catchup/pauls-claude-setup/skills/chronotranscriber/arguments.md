@@ -1,8 +1,9 @@
 # ChronoTranscriber — CLI Arguments
 
-All commands run from the project root. Abbreviation: `PY` = `uv run python` (run from project root).
+All commands run from the project root. Abbreviation: `PY` =
+`uv run python` (run from project root).
 
-### CLI Agent Contract Flags (all five entry points)
+## CLI Agent Contract Flags (all five entry points)
 
 Every parser below is extended with these shared flags
 (`modules/core/cli_args.py::add_agent_contract_args`):
@@ -16,9 +17,9 @@ Every parser below is extended with these shared flags
 Exit codes are uniform across all five entry points: `0` success, `1` one or
 more items failed/partial, `2` usage/configuration error, `130` interrupted.
 
-### Main Transcription (`main/transcribe.py`)
+## Main Transcription (`main/transcribe.py`)
 
-```
+```bash
 PY main/transcribe.py [OPTIONS]
 ```
 
@@ -50,9 +51,9 @@ PY main/transcribe.py [OPTIONS]
 | `--dry-run` | flag | Report discovery + resume/skip counts; no API calls or writes. Always exits `0` |
 | `--interactive` / `--non-interactive` / `--json` | flag | Shared agent-contract flags — see table above |
 
-### Repair Transcriptions (`main/repair.py`)
+## Repair Transcriptions (`main/repair.py`)
 
-```
+```bash
 PY main/repair.py --transcription <path> [OPTIONS]
 ```
 
@@ -67,9 +68,9 @@ PY main/repair.py --transcription <path> [OPTIONS]
 | `--batch` | flag | Use batch processing mode |
 | `--interactive` / `--non-interactive` / `--json` | flag | Shared agent-contract flags — see table above |
 
-### Check Batches (`main/check_batches.py`)
+## Check Batches (`main/check_batches.py`)
 
-```
+```bash
 PY main/check_batches.py [OPTIONS]
 ```
 
@@ -80,9 +81,9 @@ PY main/check_batches.py [OPTIONS]
 | `--output-format` | choice | Output format: `txt`, `md`, `json` |
 | `--interactive` / `--non-interactive` / `--json` | flag | Shared agent-contract flags — see table above |
 
-### Cancel Batches (`main/cancel_batches.py`)
+## Cancel Batches (`main/cancel_batches.py`)
 
-```
+```bash
 PY main/cancel_batches.py [OPTIONS]
 ```
 
@@ -92,9 +93,9 @@ PY main/cancel_batches.py [OPTIONS]
 | `--force` | flag | Skip confirmation prompt |
 | `--interactive` / `--non-interactive` / `--json` | flag | Shared agent-contract flags — see table above |
 
-### Post-Processing (`main/postprocess.py`)
+## Post-Processing (`main/postprocess.py`)
 
-```
+```bash
 PY main/postprocess.py --input <path> [OPTIONS]
 ```
 

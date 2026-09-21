@@ -65,25 +65,42 @@ scripting and CI:
 
 ## Configuration Files
 
-All in `config/` at project root. Unless the user instructs otherwise, leave configs unchanged when running extractions.
+All in `config/` at project root. Unless the user instructs otherwise, leave
+configs unchanged when running extractions.
 
-Full config reference and recommended defaults: see REFERENCE.md in this folder.
+Full config reference and recommended defaults: see REFERENCE.md in this
+folder.
 
 ### Other Config Files
 
-- **`chunking_and_context.yaml`**: `chunking.default_tokens_per_chunk`, line-range adjustment matching/retry settings (`certainty_threshold`, `max_low_certainty_retries`, `max_context_expansion_attempts`; the context window doubles per expansion, and `min_substring_length` is enforced on markers). `scan_range_multiplier` is deprecated and ignored -- a leftover key in the YAML is harmless.
-- **`concurrency_config.yaml`**: concurrency limits (overridable via `--concurrency-limit` and `--delay`), retry backoff, OpenAI `service_tier`, `daily_token_limit` enforcement
-- **`api_keys_config.yaml`** (optional): remaps each provider (`openai`, `anthropic`, `google`, `openrouter`) to a custom env var name holding its API key (e.g. `openai: OPENAI_API_KEY_2`), defaults applying when the file or an entry is omitted; the remap also reaches batch mode
+- **`chunking_and_context.yaml`**: `chunking.default_tokens_per_chunk`,
+  line-range adjustment matching/retry settings (`certainty_threshold`,
+  `max_low_certainty_retries`, `max_context_expansion_attempts`; the
+  context window doubles per expansion, and `min_substring_length` is
+  enforced on markers). `scan_range_multiplier` is deprecated and ignored
+  -- a leftover key in the YAML is harmless.
+- **`concurrency_config.yaml`**: concurrency limits (overridable via
+  `--concurrency-limit` and `--delay`), retry backoff, OpenAI
+  `service_tier`, `daily_token_limit` enforcement
+- **`api_keys_config.yaml`** (optional): remaps each provider (`openai`,
+  `anthropic`, `google`, `openrouter`) to a custom env var name holding its
+  API key (e.g. `openai: OPENAI_API_KEY_2`), defaults applying when the
+  file or an entry is omitted; the remap also reaches batch mode
 
 ## Context Files (Hierarchical Resolution)
 
-Context is resolved automatically per task (extraction or line-range adjustment). Most specific wins:
+Context is resolved automatically per task (extraction or line-range
+adjustment). Most specific wins:
 
-1. **File-specific**: `{filename}_extract_context.txt` or `{filename}_adjust_context.txt` next to input file
-2. **Folder-specific**: `{foldername}_extract_context.txt` or `{foldername}_adjust_context.txt` in parent directory
-3. **General fallback**: `context/extract_context.txt` or `context/adjust_context.txt` at project root
+1. **File-specific**: `{filename}_extract_context.txt` or
+   `{filename}_adjust_context.txt` next to input file
+2. **Folder-specific**: `{foldername}_extract_context.txt` or
+   `{foldername}_adjust_context.txt` in parent directory
+3. **General fallback**: `context/extract_context.txt` or
+   `context/adjust_context.txt` at project root
 
-Keep context files under 4,000 characters. Legacy per-schema files are in `context/legacy/` for reference.
+Keep context files under 4,000 characters. Legacy per-schema files are in
+`context/legacy/` for reference.
 
 ## Available Schemas
 
@@ -94,24 +111,53 @@ Custom schemas: create JSON schema in `schemas/`, register in
 
 ## Visual Input Pipeline
 
-ChronoMiner accepts images and PDFs directly via vision-capable LLMs, bypassing ChronoTranscriber.
+ChronoMiner accepts images and PDFs directly via vision-capable LLMs,
+bypassing ChronoTranscriber.
 
-- **Auto-detection**: Input type (`text`, `image`, `pdf`, `mixed`) is detected from file extensions. Override with `--input-type`.
-- **Supported extensions**: images (`.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.tiff`, `.tif`, `.webp`), PDFs (`.pdf`)
-- **Processing**: Images/PDFs are preprocessed per provider config (grayscale, transparency, resize, JPEG compression), then sent as base64 content blocks with `prompts/image_extraction_prompt.txt`. PDFs are rendered page-by-page at `target_dpi`; each page is one chunk.
-- **Batch support**: Visual inputs work in batch mode across OpenAI, Anthropic, and Google.
-- **Chunk slicing**: `--first-n-chunks N` / `--last-n-chunks N` limits which pages or images are processed.
-- **Detail control**: `--image-detail low|high|auto|original` overrides per-provider defaults. `original` is honored by Responses-API-routed models: the GPT-5.6 family (`gpt-5.6-sol`, `gpt-5.6-terra`, `gpt-5.6-luna`), `gpt-5.5-pro`, `gpt-5.4-pro`, `gpt-5.4`. On other models it is sent as `high`, with a once-per-model warning naming the models that honor it. `original` acts on two layers: in preprocessing it skips the `high_target_box` fit-and-pad and caps only at `original_max_side_px`/`original_max_pixels`, so a downgraded request still sends full-resolution pixels under a `high` detail parameter. It bills roughly 1.4x the input tokens of `high` on the same image. Use a model that honors it for page-image extraction.
+- **Auto-detection**: Input type (`text`, `image`, `pdf`, `mixed`) is
+  detected from file extensions. Override with `--input-type`.
+- **Supported extensions**: images (`.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`,
+  `.tiff`, `.tif`, `.webp`), PDFs (`.pdf`)
+- **Processing**: Images/PDFs are preprocessed per provider config
+  (grayscale, transparency, resize, JPEG compression), then sent as base64
+  content blocks with `prompts/image_extraction_prompt.txt`. PDFs are
+  rendered page-by-page at `target_dpi`; each page is one chunk.
+- **Batch support**: Visual inputs work in batch mode across OpenAI,
+  Anthropic, and Google.
+- **Chunk slicing**: `--first-n-chunks N` / `--last-n-chunks N` limits which
+  pages or images are processed.
+- **Detail control**: `--image-detail low|high|auto|original` overrides
+  per-provider defaults. `original` is honored by Responses-API-routed
+  models: the GPT-5.6 family (`gpt-5.6-sol`, `gpt-5.6-terra`,
+  `gpt-5.6-luna`), `gpt-5.5-pro`, `gpt-5.4-pro`, `gpt-5.4`. On other models
+  it is sent as `high`, with a once-per-model warning naming the models
+  that honor it. `original` acts on two layers: in preprocessing it skips
+  the `high_target_box` fit-and-pad and caps only at
+  `original_max_side_px`/`original_max_pixels`, so a downgraded request
+  still sends full-resolution pixels under a `high` detail parameter. It
+  bills roughly 1.4x the input tokens of `high` on the same image. Use a
+  model that honors it for page-image extraction.
 
 ## Anthropic Prompt Caching
 
-For Anthropic models (direct or via OpenRouter), prompt caching is enabled automatically. The system message content block is annotated with `cache_control: {"type": "ephemeral"}`, allowing Anthropic to cache and reuse the system prompt across chunks. Cache hit/miss is logged with token counts (`cache_creation_input_tokens`, `cache_read_input_tokens`). This reduces cost and latency for multi-chunk extractions.
+For Anthropic models (direct or via OpenRouter), prompt caching is enabled
+automatically. The system message content block is annotated with
+`cache_control: {"type": "ephemeral"}`, allowing Anthropic to cache and
+reuse the system prompt across chunks. Cache hit/miss is logged with token
+counts (`cache_creation_input_tokens`, `cache_read_input_tokens`). This
+reduces cost and latency for multi-chunk extractions.
 
 ## Resume and Force
 
-- `--resume`: Skips fully processed files; resumes partially processed files from last completed chunk via `_temporary.jsonl` tracking.
-- `--force`: Reprocesses all files from scratch, ignoring existing outputs and tracking files.
-- For line range adjustment: `--resume` skips files whose completed adjustment JSONL matches the current settings, the current `_line_ranges.txt` fingerprint, and the prompt hash (regenerating the ranges file or editing the prompt invalidates the marker and triggers re-adjustment); `--force` re-adjusts all.
+- `--resume`: Skips fully processed files; resumes partially processed
+  files from last completed chunk via `_temporary.jsonl` tracking.
+- `--force`: Reprocesses all files from scratch, ignoring existing outputs
+  and tracking files.
+- For line range adjustment: `--resume` skips files whose completed
+  adjustment JSONL matches the current settings, the current
+  `_line_ranges.txt` fingerprint, and the prompt hash (regenerating the
+  ranges file or editing the prompt invalidates the marker and triggers
+  re-adjustment); `--force` re-adjusts all.
 - `--force` takes precedence if both flags are set.
 - Temp JSONLs carry a format-version header; resume refuses to merge
   unversioned or stale-versioned artifacts left over from older runs instead
@@ -136,7 +182,9 @@ Batch processing across OpenAI (50% discount), Anthropic, and Google with unifie
 3. **Cancel**: `uv run python main/cancel_batches.py [--force]`
 4. **Repair**: `uv run python main/repair.py [--schema <name>] [--files f1 f2]`
 
-Statuses: `validating`, `in_progress`, `finalizing`, `completed`, `failed`, `expired`, `cancelled`. Completed batches auto-download into all configured output formats.
+Statuses: `validating`, `in_progress`, `finalizing`, `completed`, `failed`,
+`expired`, `cancelled`. Completed batches auto-download into all configured
+output formats.
 
 Large request sets are auto-split by the provider's per-batch request-count
 and byte limits into `_part{n}` submissions (one tracking record per part);
@@ -162,9 +210,22 @@ fall back to the configured assumption with a warning).
 
 Two utilities for optimizing text chunking boundaries before extraction.
 
-- **Generate** (`main/generate_line_ranges.py`): Creates `{filename}_line_ranges.txt` with token-based ranges. `--tokens N` overrides default chunk size. `--first-n-chunks` / `--last-n-chunks` limits output ranges.
-- **Adjust** (`main/adjust_line_ranges.py`): LLM-powered semantic boundary detection with certainty scoring (0-100), automatic retry, and geometric context expansion (window radius doubles per attempt). The model sees a `<<<CURRENT_CHUNK_START>>>` sentinel marking the boundary under review plus the schema name as the semantic unit type; deleting a no-content range requires the certainty threshold. Configured via `chunking_and_context.yaml`. Supports `--resume` and `--force` as well as `--first-n-chunks` / `--last-n-chunks` (absolute range indices; unselected ranges pass through unchanged, and sliced runs are never marked complete).
-- **Chunking strategies**: `--chunking line_ranges` uses pre-existing files; `--chunking adjust-line-ranges` generates and adjusts in one step.
+- **Generate** (`main/generate_line_ranges.py`): Creates
+  `{filename}_line_ranges.txt` with token-based ranges. `--tokens N`
+  overrides default chunk size. `--first-n-chunks` / `--last-n-chunks`
+  limits output ranges.
+- **Adjust** (`main/adjust_line_ranges.py`): LLM-powered semantic boundary
+  detection with certainty scoring (0-100), automatic retry, and geometric
+  context expansion (window radius doubles per attempt). The model sees a
+  `<<<CURRENT_CHUNK_START>>>` sentinel marking the boundary under review
+  plus the schema name as the semantic unit type; deleting a no-content
+  range requires the certainty threshold. Configured via
+  `chunking_and_context.yaml`. Supports `--resume` and `--force` as well as
+  `--first-n-chunks` / `--last-n-chunks` (absolute range indices;
+  unselected ranges pass through unchanged, and sliced runs are never
+  marked complete).
+- **Chunking strategies**: `--chunking line_ranges` uses pre-existing
+  files; `--chunking adjust-line-ranges` generates and adjusts in one step.
 
 ## Cost Analysis
 
