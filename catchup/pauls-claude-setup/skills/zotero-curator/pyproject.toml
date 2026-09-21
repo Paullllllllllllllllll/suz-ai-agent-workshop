@@ -1,0 +1,14 @@
+[project]
+name = "zotero-curator"
+version = "0.1.0"
+description = "Zotero library curation: dedup, metadata repair, tagging, import."
+requires-python = ">=3.12"
+dependencies = [
+    "pyzotero>=1.13",
+    "httpx>=0.28",
+    "pypdf>=6.0",
+    "PyYAML>=6.0",
+]
+
+[tool.uv]
+package = false

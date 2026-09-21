@@ -1,0 +1,97 @@
+# Faceted controlled vocabulary for the Zotero library (zotero-curator Mode C).
+#
+# EXAMPLE VOCABULARY: replace these example values with your own. Keep the
+# facet names and the rules block unless you have a reason to change them.
+#
+# Single source of truth. Tags are written as "facet::value" (manual, type 0),
+# except free-form `additional` tags which carry no prefix. Facets are GENERAL
+# by construction so the scheme survives research moving to new topics:
+# new VALUES are added over time (reviewed in from agents' proposed_new_values
+# and from recurring `additional` tags); facets themselves rarely change.
+#
+# Conventions:
+#   - values are lowercase-hyphenated (e.g. labor-markets), EXCEPT
+#     project:: codes which are uppercase (e.g. DISS, PAPER1).
+#   - Zotero tags are case-sensitive; keep to these exact spellings.
+#   - agents map a work to EXISTING values; anything not present goes into
+#     proposed_new_values (held for review), never applied silently.
+
+version: 1
+
+rules:
+  # facets that may carry several values on one work
+  multi_value: [topic, region, method, project, period]
+  # facets that should normally carry exactly one value
+  single_value: [source-type, discipline, lang]
+  max_additional: 5          # cap on free-form un-prefixed tags per work
+  # every surviving work gets clear_auto_tags: true (type=1 import tags removed)
+
+facets:
+
+  # ---- WHAT the work is about -------------------------------------------
+  topic:
+    - inequality
+    - migration
+    - labor-markets
+    - education
+    - political-behavior
+    - social-networks
+    - family-and-gender
+    - methodology              # works primarily about method
+    - theory                   # works primarily about theory
+
+  # ---- WHEN it covers (multi-value for works spanning periods) ----------
+  period:
+    - pre-1900
+    - 1900-1945
+    - 1945-1990
+    - post-1990
+    - long-run                 # broad multi-decade or multi-century sweep
+
+  # ---- WHERE it is about -------------------------------------------------
+  region:
+    - switzerland
+    - germany
+    - europe                   # pan-European / unspecified
+    - north-america
+    - global
+
+  # ---- WHAT KIND of source/work -----------------------------------------
+  source-type:
+    - secondary-literature     # research articles and books
+    - theory                   # foundational/theoretical text
+    - reference                # handbook / encyclopedia / companion
+    - textbook                 # methods / instructional
+    - dataset-documentation    # codebooks, data reports
+    - review                   # book review
+    - thesis                   # doctoral / master's dissertation
+
+  # ---- WHICH of your projects it feeds (uppercase codes) -----------------
+  # Add your own project codes here, e.g. - DISS  # dissertation
+  project: []
+
+  # ---- HOW the work investigates ----------------------------------------
+  method:
+    - survey
+    - regression
+    - qualitative-interviews
+    - experiment
+    - text-as-data
+    - network-analysis
+    - ethnography
+
+  # ---- DISCIPLINARY lens (prefer one) -----------------------------------
+  discipline:
+    - sociology
+    - political-science
+    - economics
+    - history
+    - psychology
+    - anthropology
+
+  # ---- LANGUAGE of the work (extend as your sources need) ---------------
+  lang:
+    - en
+    - de
+    - fr
+    - it

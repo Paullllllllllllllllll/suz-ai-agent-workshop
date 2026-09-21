@@ -1,0 +1,13 @@
+[project]
+name = "find-literature"
+version = "0.1.0"
+description = "Zotero citation lookup (Chicago, BibTeX, CSL-JSON, RIS, EndNote)."
+requires-python = ">=3.12"
+dependencies = [
+    "pyzotero>=1.13",
+    "httpx>=0.28",
+    "citeproc-py>=0.9",
+]
+
+[tool.uv]
+package = false

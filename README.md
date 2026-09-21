@@ -1,4 +1,4 @@
-# SUZ AI Agent Workshop v0.5.1
+# SUZ AI Agent Workshop v0.6.0
 
 This repository holds the materials for the one-day workshop "AI Agents
 for Social Science Research" at the Department of Sociology (SUZ),
@@ -46,10 +46,21 @@ install/       setup guides (Windows, macOS; Claude Code CLI + Desktop)
 walkthrough/   morning: step-by-step handout and the toy project
 demos/         afternoon: workshop editions of advanced skills
 tryouts/       afternoon: starter packages per hands-on track
-catchup/       after the workshop: slides, and how to build your own research hub
+catchup/       after the workshop: slides, how to build your own research hub,
+               and an example Claude Code setup to adapt
 ```
 
 ## Changelog
+
+- **v0.6.0** (21 September 2026) -- `catchup/pauls-claude-setup/`, a
+  depersonalized copy of Paul's Claude Code configuration laid out like
+  `~/.claude/`: an example `CLAUDE.md` with placeholders, three rule files,
+  fourteen skills, four subagents, and the Research Assistant output style.
+  The skills cover the ChronoDownloader, ChronoTranscriber, ChronoMiner, and
+  AutoExcerpter tools (with links to their repositories), Zotero search and
+  curation, and writing and code hygiene. `grill-me`, `handoff`, and
+  `writing-great-skills` are adapted from Matt Pocock's MIT-licensed skills
+  collection; the attribution is in the folder's README.
 
 - **v0.5.1** (18 September 2026) -- wording in
   `catchup/replicate-nicos-research-hub/README.md`: it is now written in

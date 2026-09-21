@@ -10,6 +10,7 @@ day, so you can work through it in the same order at your own pace.
 |---|---|
 | `workshop-slides.pdf` | The full-day slides (PDF) |
 | `replicate-nicos-research-hub/` | For anyone who wants to build something like Nico's research hub or literature workflow: an explainer, a clickable tour with placeholder data, and a starter prompt for your agent |
+| `pauls-claude-setup/` | Paul's Claude Code setup to copy and adapt: an example `CLAUDE.md`, rule files, skills (research tools, Zotero, writing, code), subagents, and an output style |
 
 ## Work through the day in this order
 
@@ -22,6 +23,7 @@ day, so you can work through it in the same order at your own pace.
 | 4 | Afternoon: advanced workflow demos | `demos/` |
 | 5 | Try-outs: pick one track and paste its starter prompt | `tryouts/` |
 | 6 | Reading for the responsible-use discussion | `READING_LIST.md` |
+| 7 | Set up your own configuration from a working example | `catchup/pauls-claude-setup/` |
 
 ## Data note
 
@@ -31,4 +33,4 @@ the workshop day only, and those files have been removed. See
 
 ## Questions
 
-Paul Götz (goetz@soziologie.uzh.ch) · Nico Mutzner (nico.mutzner@uzh.ch)
+Paul Götz (<goetz@soziologie.uzh.ch>) · Nico Mutzner (<nico.mutzner@uzh.ch>)
