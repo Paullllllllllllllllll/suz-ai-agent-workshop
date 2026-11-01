@@ -19,3 +19,10 @@ CLAUDE.local.md
 # IDE
 .idea/
 
+
+# Agent and T3 Code files (local only)
+/AGENTS.md
+/CLAUDE.md
+/.claude/
+/t3.json
+/.t3-icon.svg
